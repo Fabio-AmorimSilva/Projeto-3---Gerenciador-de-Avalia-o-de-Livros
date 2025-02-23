@@ -2,6 +2,8 @@
 
 public class User : Entity
 {
+    public const int MaxNameLength = 150;
+    
     public int Score { get; private set; }
     public string Name { get; private set; }
     public string Email { get; private set; }
@@ -17,6 +19,11 @@ public class User : Entity
         string password
     )
     {
+        Guard.IsNotWhiteSpace(name);
+        Guard.IsLessThanOrEqualTo(name.Length, MaxNameLength, nameof(name));
+        Guard.IsNotWhiteSpace(email);
+        Guard.IsNotWhiteSpace(password);
+        
         Score = score;
         Name = name;
         Email = email;

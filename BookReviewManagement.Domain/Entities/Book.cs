@@ -2,6 +2,11 @@
 
 public sealed class Book : Entity, IAuditableEntity
 {
+    public const int MaxTitleLength = 500;
+    public const int MaxDescriptionLength = 1000;
+    public const int MaxAuthorLength = 150;
+    public const int MaxPublisherLength = 200;
+    
     public string Title { get; private set; }
     public string Description { get; private set; }
     public string Isbn { get; private set; }
@@ -27,10 +32,21 @@ public sealed class Book : Entity, IAuditableEntity
         DateTime publishDate, 
         int pages, 
         decimal score,
-        byte[] cover,
-        DateTime createdAt
+        byte[] cover
     )
     {
+        Guard.IsNotWhiteSpace(title);
+        Guard.IsLessThanOrEqualTo(title.Length, MaxTitleLength, nameof(title));
+        Guard.IsNotWhiteSpace(description);
+        Guard.IsLessThanOrEqualTo(description.Length, MaxDescriptionLength, nameof(description));
+        Guard.IsNotNullOrWhiteSpace(isbn);
+        Guard.IsNotNullOrWhiteSpace(author);
+        Guard.IsLessThanOrEqualTo(author.Length, MaxAuthorLength, nameof(author));
+        Guard.IsNotNullOrWhiteSpace(publisher);
+        Guard.IsLessThanOrEqualTo(publisher.Length, MaxPublisherLength, nameof(publisher));
+        Guard.IsNotDefault(publishDate);
+        Guard.IsNotDefault(pages);
+        
         Title = title;
         Description = description;
         Isbn = isbn;
@@ -41,6 +57,5 @@ public sealed class Book : Entity, IAuditableEntity
         Pages = pages;
         Score = score;
         Cover = cover;
-        CreatedAt = createdAt;
     }
 }
