@@ -2,3 +2,4 @@
 
 global using BookReviewManagement.Domain.Enums;
 global using BookReviewManagement.Domain.Interfaces;
+global using CommunityToolkit.Diagnostics;
