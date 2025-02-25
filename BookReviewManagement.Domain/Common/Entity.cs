@@ -1,4 +1,4 @@
-﻿namespace BookReviewManagement.Domain.Entities;
+﻿namespace BookReviewManagement.Domain.Common;
 
 public abstract class Entity
 {
