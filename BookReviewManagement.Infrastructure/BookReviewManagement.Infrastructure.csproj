@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BookReviewManagement.Application\BookReviewManagement.Application.csproj" />
       <ProjectReference Include="..\BookReviewManagement.Domain\BookReviewManagement.Domain.csproj" />
     </ItemGroup>
 
