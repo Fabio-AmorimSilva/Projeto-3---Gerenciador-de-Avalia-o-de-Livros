@@ -1,6 +1,0 @@
-@BookReviewManagement.WebApi_HostAddress = http://localhost:5258
-
-GET {{BookReviewManagement.WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
