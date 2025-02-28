@@ -33,6 +33,12 @@ public class Result<T> : Result
             Data = data,
             IsSuccess = true
         };
+    
+    public static Result<T> Success() 
+        => new()
+        {
+            IsSuccess = true
+        };
 
     public new static Result<T> Error(string message)
         => new()
