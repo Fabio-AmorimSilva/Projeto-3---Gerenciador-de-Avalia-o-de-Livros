@@ -31,8 +31,7 @@ public sealed class Book : Entity, IAuditableEntity
         BookGenre genre,
         DateTime publishDate, 
         int pages, 
-        decimal score,
-        byte[] cover
+        decimal score
     )
     {
         Guard.IsNotWhiteSpace(title);
@@ -46,6 +45,7 @@ public sealed class Book : Entity, IAuditableEntity
         Guard.IsLessThanOrEqualTo(publisher.Length, MaxPublisherLength, nameof(publisher));
         Guard.IsNotDefault(publishDate);
         Guard.IsNotDefault(pages);
+        Guard.IsBetween(score, 1, 5);
         
         Title = title;
         Description = description;
@@ -56,6 +56,5 @@ public sealed class Book : Entity, IAuditableEntity
         PublishDate = publishDate;
         Pages = pages;
         Score = score;
-        Cover = cover;
     }
 }
