@@ -30,9 +30,5 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder
             .Property(u => u.Password)
             .IsRequired();
-        
-        builder
-            .Property(u => u.Score)
-            .IsRequired();
     }
 }
