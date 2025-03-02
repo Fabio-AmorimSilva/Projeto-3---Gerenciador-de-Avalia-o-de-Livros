@@ -30,8 +30,7 @@ public sealed class Book : Entity, IAuditableEntity
         string publisher,
         BookGenre genre,
         DateTime publishDate, 
-        int pages, 
-        decimal score
+        int pages
     )
     {
         Guard.IsNotWhiteSpace(title);
@@ -45,7 +44,6 @@ public sealed class Book : Entity, IAuditableEntity
         Guard.IsLessThanOrEqualTo(publisher.Length, MaxPublisherLength, nameof(publisher));
         Guard.IsNotDefault(publishDate);
         Guard.IsNotDefault(pages);
-        Guard.IsBetween(score, 1, 5);
         
         Title = title;
         Description = description;
@@ -55,7 +53,6 @@ public sealed class Book : Entity, IAuditableEntity
         Genre = genre;
         PublishDate = publishDate;
         Pages = pages;
-        Score = score;
     }
 
     public void Update(string title, 
