@@ -1,0 +1,3 @@
+﻿namespace BookReviewManagement.Application.Queries.ListBooksReadCountOverTheYear;
+
+public sealed record ListBooksReadCountOverTheYearQuery : IRequest<Result<ListBooksReadCountOverTheYearViewModel>>;
