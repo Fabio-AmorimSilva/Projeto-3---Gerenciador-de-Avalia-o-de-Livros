@@ -12,7 +12,9 @@ public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCom
     {
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateUserCommand.Name)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateUserCommand.Name)))
+            .MaximumLength(User.MaxNameLength)
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateUserCommand.Name), User.MaxNameLength));
 
         RuleFor(command => command.Email)
             .NotEmpty()
@@ -21,6 +23,6 @@ public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCom
         
         RuleFor(command => command.Password)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateUserCommand.Name)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateUserCommand.Password)));
     }
 }
