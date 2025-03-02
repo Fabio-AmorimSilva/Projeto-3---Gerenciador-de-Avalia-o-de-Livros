@@ -57,4 +57,33 @@ public sealed class Book : Entity, IAuditableEntity
         Pages = pages;
         Score = score;
     }
+
+    public void Update(string title, 
+        string description,
+        string author, 
+        string publisher,
+        BookGenre genre,
+        DateTime publishDate, 
+        int pages
+    )
+    {
+        Guard.IsNotWhiteSpace(title);
+        Guard.IsLessThanOrEqualTo(title.Length, MaxTitleLength, nameof(title));
+        Guard.IsNotWhiteSpace(description);
+        Guard.IsLessThanOrEqualTo(description.Length, MaxDescriptionLength, nameof(description));
+        Guard.IsNotNullOrWhiteSpace(author);
+        Guard.IsLessThanOrEqualTo(author.Length, MaxAuthorLength, nameof(author));
+        Guard.IsNotNullOrWhiteSpace(publisher);
+        Guard.IsLessThanOrEqualTo(publisher.Length, MaxPublisherLength, nameof(publisher));
+        Guard.IsNotDefault(publishDate);
+        Guard.IsNotDefault(pages);
+       
+        Title = title;
+        Description = description;
+        Author = author;
+        Publisher = publisher;
+        Genre = genre;
+        PublishDate = publishDate;
+        Pages = pages;
+    }
 }
