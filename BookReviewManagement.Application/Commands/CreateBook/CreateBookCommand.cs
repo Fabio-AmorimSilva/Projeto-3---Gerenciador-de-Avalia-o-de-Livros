@@ -8,8 +8,7 @@ public sealed record CreateBookCommand(
     string Publisher,
     BookGenre Genre,
     DateTime PublishDate,
-    int Pages,
-    decimal Score
+    int Pages
 ) : IRequest<Result<Guid>>;
 
 public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
@@ -55,11 +54,5 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
         RuleFor(command => command.Pages)
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookCommand.Pages)));
-
-        RuleFor(command => command.Score)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookCommand.Score)))
-            .Must(score => score is >= 1 and <= 5)
-            .WithMessage(ErrorMessages.HasToBeGreaterThan(nameof(CreateBookCommand.Score), 0));
     }
 }

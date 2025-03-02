@@ -12,8 +12,7 @@ public sealed class CreateBookCommandHandler(IBookReviewManagementDbContext cont
             publisher: request.Publisher,
             genre: request.Genre,
             publishDate: request.PublishDate,
-            pages: request.Pages,
-            score: request.Score
+            pages: request.Pages
         );
 
         var isbnAlreadyExists = await context.Books
