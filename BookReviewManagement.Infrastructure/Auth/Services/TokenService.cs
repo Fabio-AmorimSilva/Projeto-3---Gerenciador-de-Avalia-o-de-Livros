@@ -1,6 +1,6 @@
 ﻿namespace BookReviewManagement.Infrastructure.Auth.Services;
 
-public sealed class JwtTokenService(IOptions<JwtSettings> settings)
+public sealed class TokenService(IOptions<JwtSettings> settings) : ITokenService
 {
     private readonly JwtSettings _settings = settings.Value;
 

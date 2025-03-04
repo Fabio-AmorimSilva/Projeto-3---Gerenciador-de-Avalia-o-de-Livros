@@ -14,7 +14,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IBookReviewManagementDbContext>(provider => provider.GetRequiredService<BookReviewManagementDbContext>());
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<IPasswordHashService, PasswordHashService>();
-        services.AddScoped<JwtTokenService>();
+        services.AddScoped<ITokenService, TokenService>();
         
         return services;
     }
