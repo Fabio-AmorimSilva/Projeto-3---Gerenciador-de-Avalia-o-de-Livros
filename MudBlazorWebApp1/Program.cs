@@ -1,5 +1,5 @@
 using MudBlazor.Services;
-using BookReviewManagement.Blazor.Components;
+using MudBlazorWebApp1.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
