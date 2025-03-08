@@ -2,7 +2,7 @@
 
 public static class ServiceCollectionExtensions
 {
-    public static ServiceCollection AddApplication(this ServiceCollection services)
+    public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         services.TryAddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
