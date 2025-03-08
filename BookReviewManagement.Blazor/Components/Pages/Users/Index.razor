@@ -1,0 +1,33 @@
+﻿@page "/users"
+
+<PageTitle>Users</PageTitle>
+
+<MudText Typo="Typo.h3">Users</MudText>
+
+<MudDataGrid Items="Users">
+    <Columns>
+        <PropertyColumn Property="u => u.Name" Title="UserName"></PropertyColumn>
+        <PropertyColumn Property="u => u.Email"></PropertyColumn>
+        <TemplateColumn CellClass="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudButton
+                        Href="/users/create"
+                        StartIcon="@Icons.Material.Filled.Add"
+                        Size="Size.Small"
+                        Variant="Variant.Filled"
+                        Color="Color.Primary">
+                        Create
+                    </MudButton>
+                    <MudButton
+                        StartIcon="@Icons.Material.Filled.Delete"
+                        Size="Size.Small"
+                        Variant="Variant.Filled"
+                        Color="Color.Error">
+                        Delete
+                    </MudButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
