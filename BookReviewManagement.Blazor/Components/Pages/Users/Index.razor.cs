@@ -20,4 +20,29 @@ public partial class Index : ComponentBase
         
         Users = users.Data ?? [];
     }
+
+    private async Task DeleteUserAsync(Guid id)
+    {
+        var result = await DialogService.ShowMessageBox(
+            title: "Delete User",
+            message: "Want to delete this user?",
+            yesText: "Delete",
+            noText: "No"
+        );
+
+        if (result is true)
+        {
+            var response = await Mediator.Send(new DeleteUserCommand(id));
+            if(!response.IsSuccess)
+                Snackbar.Add($"{response.Message}", Severity.Error);
+            
+            Snackbar.Add("User was deleted", Severity.Success);
+            await OnInitializedAsync();
+        }
+    }
+    
+    private void GoToUpdate(Guid userId)
+    {
+        Navigation.NavigateTo($"/users/update/{userId}");
+    }
 }

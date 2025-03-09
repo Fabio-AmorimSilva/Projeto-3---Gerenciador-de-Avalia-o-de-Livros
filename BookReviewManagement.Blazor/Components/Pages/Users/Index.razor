@@ -4,6 +4,17 @@
 
 <MudText Typo="Typo.h3">Users</MudText>
 
+<MudDivider Vertical></MudDivider>
+
+<MudButton
+    Href="/users/create"
+    StartIcon="@Icons.Material.Filled.Add"
+    Size="Size.Small"
+    Variant="Variant.Filled"
+    Color="Color.Info">
+    Create
+</MudButton>
+
 <MudDataGrid Items="Users">
     <Columns>
         <PropertyColumn Property="u => u.Name" Title="UserName"></PropertyColumn>
@@ -12,18 +23,19 @@
             <CellTemplate>
                 <MudStack Row>
                     <MudButton
-                        Href="/users/create"
-                        StartIcon="@Icons.Material.Filled.Add"
+                        StartIcon="@Icons.Material.Filled.Edit"
                         Size="Size.Small"
                         Variant="Variant.Filled"
-                        Color="Color.Primary">
-                        Create
+                        Color="Color.Info"
+                        onClick="@(() => GoToUpdate(context.Item.Id))">
+                        Edit
                     </MudButton>
                     <MudButton
                         StartIcon="@Icons.Material.Filled.Delete"
                         Size="Size.Small"
                         Variant="Variant.Filled"
-                        Color="Color.Error">
+                        Color="Color.Error"
+                        onClick="@(() => DeleteUserAsync(context.Item.Id))">
                         Delete
                     </MudButton>
                 </MudStack>
