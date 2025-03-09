@@ -1,0 +1,31 @@
+﻿@page "/users/update/{userId:guid}"
+
+<PageTitle>Update User</PageTitle>
+
+<MudText Typo="Typo.h2">Edit</MudText>
+
+<MudCard>
+    <EditForm Model="@UserUpdateModel" OnValidSubmit="UpdateUser">
+        <MudCardContent>
+            <MudTextField
+                @bind-Value="UserUpdateModel.Name"
+                For="@(() => UserUpdateModel.Name)"
+                Label="Name"
+                Placeholder="Insert name here...." />
+
+            <MudTextField
+                @bind-Value="UserUpdateModel.Email"
+                For="@(() => UserUpdateModel.Email)"
+                Label="Email"
+                Placeholder="Insert email here...." />
+            
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Save"
+                Color="Color.Info"
+                ButtonType="ButtonType.Submit">
+                Save
+            </MudButton>
+        </MudCardContent>
+    </EditForm>
+</MudCard>
