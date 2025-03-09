@@ -7,6 +7,7 @@ public sealed class ListUsersQueryHandler(IBookReviewManagementDbContext context
         var users = await context.Users
             .Select(u => new ListUsersViewModel
             {
+                Id = u.Id,
                 Name = u.Name,
                 Email = u.Email
             })
