@@ -17,8 +17,13 @@
                 
             <MudTextField 
                 @bind-Value="UserInputModel.Password"
-                For="@(() => UserInputModel.Email)"
-                Label="Password" 
+                For="@(() => UserInputModel.Password)"
+                Label="Password"
+                InputType="PasswordInputType"
+                Adornment="Adornment.End" 
+                AdornmentIcon="@PasswordInputIcon" 
+                OnAdornmentClick="PasswordTextField"
+                AdornmentAriaLabel="Show Password"
                 Placeholder="Insert password here..."/>
             
             <MudButton Variant="Variant.Filled"

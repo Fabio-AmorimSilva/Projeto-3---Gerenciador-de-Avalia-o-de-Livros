@@ -13,6 +13,9 @@ public partial class Create : ComponentBase
     private IDialogService DialogService { get; set; }
     
     public UserInputModel UserInputModel { get; set; } = new();
+    public bool IsShow;
+    public InputType PasswordInputType { get; set; } = InputType.Password;
+    public string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
 
     public async void OnValidSubmitAsync(EditContext editContext)
     {
@@ -39,6 +42,22 @@ public partial class Create : ComponentBase
         else
         {
             Snackbar.Add("An Error has occurred", Severity.Error);
+        }
+    }
+
+    public void PasswordTextField()
+    {
+        if (IsShow)
+        {
+            IsShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInputType = InputType.Password;
+        }
+        else
+        {
+            IsShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInputType = InputType.Text;
         }
     }
 }
