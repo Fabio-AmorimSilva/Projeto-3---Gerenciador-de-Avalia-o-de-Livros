@@ -13,6 +13,8 @@ public class Review: Entity, IAuditableEntity
     
     public DateTime CreatedAt { get; set; }
 
+    protected Review() { }
+    
     public Review(
         int score, 
         string description,

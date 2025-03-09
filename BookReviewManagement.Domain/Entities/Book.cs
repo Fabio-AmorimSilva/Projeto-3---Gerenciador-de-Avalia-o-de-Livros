@@ -22,6 +22,8 @@ public sealed class Book : Entity, IAuditableEntity
     public IReadOnlyCollection<Review> Reviews => _reviews;
     private readonly List<Review> _reviews = [];
 
+    protected Book(){}
+    
     public Book(
         string title, 
         string description,

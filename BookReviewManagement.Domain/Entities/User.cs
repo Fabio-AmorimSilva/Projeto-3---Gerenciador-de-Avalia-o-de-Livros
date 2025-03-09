@@ -11,6 +11,8 @@ public class User : Entity
     private readonly List<Review> _reviews = [];
     public IReadOnlyCollection<Review> Reviews => _reviews;
 
+    protected User(){}
+    
     public User(
         string name,
         string email,
