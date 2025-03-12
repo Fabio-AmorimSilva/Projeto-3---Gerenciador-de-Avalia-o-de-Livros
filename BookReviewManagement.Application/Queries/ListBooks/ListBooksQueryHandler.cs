@@ -7,6 +7,7 @@ public sealed class ListBooksQueryHandler(IBookReviewManagementDbContext context
         var books = await context.Books
             .Select(b => new ListBookViewModel
             {
+                Id = b.Id,
                 Title = b.Title,
                 Description = b.Description,
                 Isbn = b.Isbn,

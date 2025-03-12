@@ -8,6 +8,7 @@ public sealed class ListBookReviewsQueryHandler(IBookReviewManagementDbContext c
             .SelectMany(b => b.Reviews.Where(b => b.Id == request.BookId))
             .Select(r => new ListBookReviewsViewModel
             {
+                Id = r.Id,
                 Title = r.Book.Title,
                 Isbn = r.Book.Isbn,
                 Description = r.Description,
