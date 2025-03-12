@@ -35,4 +35,30 @@ public class Review: Entity, IAuditableEntity
         BookId = book.Id;
         Book = book;
     }
+    
+    public Review(
+        int score, 
+        string description
+    )
+    {
+        Guard.IsNotWhiteSpace(description);
+        Guard.IsLessThanOrEqualTo(description.Length, MaxDescriptionLength, nameof(description));
+        Guard.IsNotDefault(score);
+        
+        Score = score;
+        Description = description;
+    }
+    
+    public void Update(
+        int score, 
+        string description
+    )
+    {
+        Guard.IsNotWhiteSpace(description);
+        Guard.IsLessThanOrEqualTo(description.Length, MaxDescriptionLength, nameof(description));
+        Guard.IsNotDefault(score);
+        
+        Score = score;
+        Description = description;
+    }
 }
