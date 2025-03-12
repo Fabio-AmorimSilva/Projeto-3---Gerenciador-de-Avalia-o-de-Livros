@@ -1,0 +1,46 @@
+﻿@page "/books"
+
+<PageTitle>Books</PageTitle>
+
+<MudText Typo="Typo.h3">Books</MudText>
+
+<MudButton
+    Variant="Variant.Filled"
+    StartIcon="@Icons.Material.Filled.Add"
+    Color="Color.Info"
+    Size="Size.Large"
+    Href="/books/create">
+    New Book
+</MudButton>
+
+<MudDataGrid Items="Books">
+    <PropertyColumn Property="b => b.Isbn"></PropertyColumn>
+    <PropertyColumn Property="b => b.Title"></PropertyColumn>
+    <PropertyColumn Property="b => b.Description"></PropertyColumn>
+    <PropertyColumn Property="b => b.Author"></PropertyColumn>
+    <PropertyColumn Property="b => b.Genre"></PropertyColumn>
+    <PropertyColumn Property="b => b.Publisher"></PropertyColumn>
+    <PropertyColumn Property="b => b.PublishDate"></PropertyColumn>
+    <TemplateColumn>
+        <CellTemplate>
+            <MudStack Row>
+                <MudButton
+                    Variant="Variant.Filled"
+                    StartIcon="@Icons.Material.Filled.Edit"
+                    Color="Color.Info"
+                    Size="Size.Large"
+                    onclick="@(() => GoToUpdate(context.Item.Id))">
+                    Edit
+                </MudButton>
+                <MudButton
+                    Variant="Variant.Filled"
+                    StartIcon="@Icons.Material.Filled.Delete"
+                    Color="Color.Warning"
+                    Size="Size.Large"
+                    onclick="@(() => DeleteBook(context.Item.Id))">
+                    Edit
+                </MudButton>
+            </MudStack>
+        </CellTemplate>
+    </TemplateColumn>
+</MudDataGrid>
