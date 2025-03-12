@@ -42,6 +42,11 @@ public class User : Entity
         Email = email;
     }
 
+    public void AddReview(Review review)
+    {
+        _reviews.Add(review);
+    }
+    
     public void UpdatePassword(string password)
     {
         Guard.IsNotWhiteSpace(password);
