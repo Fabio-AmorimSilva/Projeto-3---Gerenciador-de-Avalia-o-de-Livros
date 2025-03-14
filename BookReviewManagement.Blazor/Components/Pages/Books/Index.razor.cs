@@ -13,8 +13,8 @@ public partial class Index : ComponentBase
     
     [Inject]
     public ISnackbar Snackbar { get; set; }
-    
-    public IEnumerable<ListBookViewModel> Books { get; set; }
+
+    public IEnumerable<ListBookViewModel> Books { get; set; } = [];
 
     protected override async Task OnInitializedAsync()
     {
@@ -40,11 +40,17 @@ public partial class Index : ComponentBase
                 Snackbar.Add(response.Message, Severity.Error);
             
             Snackbar.Add("Book successfully deleted!!", Severity.Success);
+            await OnInitializedAsync();
         }
     }
 
     private void GoToUpdate(Guid bookId)
     {
         Navigation.NavigateTo($"books/update/{bookId}");
+    }
+    
+    private void GoToReviews(Guid bookId)
+    {
+        Navigation.NavigateTo($"books/{bookId}/reviews");
     }
 }

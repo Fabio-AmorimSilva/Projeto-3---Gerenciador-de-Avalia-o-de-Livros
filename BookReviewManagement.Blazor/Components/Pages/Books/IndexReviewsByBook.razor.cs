@@ -1,6 +1,6 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Reviews;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
-public partial class Index : ComponentBase
+public partial class IndexReviewsByBook : ComponentBase
 {
     [Inject]
     public IMediator Mediator { get; set; }

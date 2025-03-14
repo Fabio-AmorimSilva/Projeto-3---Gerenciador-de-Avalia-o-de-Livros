@@ -1,0 +1,45 @@
+﻿@page "/books/{bookId:guid}/reviews"
+
+<PageTitle>Reviews</PageTitle>
+
+<MudText Typo="Typo.h3">Reviews</MudText>
+
+<MudButton
+    Variant="Variant.Filled"
+    StartIcon="@Icons.Material.Filled.Add"
+    Color="Color.Info"
+    Size="Size.Large"
+    Href="/reviews/create">
+    New Review
+</MudButton>
+
+<MudDataGrid Items="Reviews">
+    <Columns>
+        <PropertyColumn Property="r => r.Title" Title="Book"></PropertyColumn>
+        <PropertyColumn Property="r => r.Isbn" Title="ISBN"></PropertyColumn>
+        <PropertyColumn Property="r => r.Description" Title="Description"></PropertyColumn>
+        <PropertyColumn Property="r => r.Score" Title="Score"></PropertyColumn>
+        <TemplateColumn Class="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudButton
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Add"
+                        Color="Color.Info"
+                        Size="Size.Large"
+                        onclick="@(() => GoToUpdate(context.Item.Id))">
+                        Edit
+                    </MudButton>
+                    <MudButton
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Delete"
+                        Color="Color.Warning"
+                        Size="Size.Large"
+                        onclick="@(() => DeleteReviewAsync(context.Item.Id))">
+                        Delete
+                    </MudButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
