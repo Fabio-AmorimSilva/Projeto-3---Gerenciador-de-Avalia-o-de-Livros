@@ -45,4 +45,9 @@ public partial class Index : ComponentBase
     {
         Navigation.NavigateTo($"/users/update/{userId}");
     }
+
+    private void GoToReviews(Guid userId)
+    {
+        Navigation.NavigateTo($"/users/{userId}/reviews");
+    }
 }
