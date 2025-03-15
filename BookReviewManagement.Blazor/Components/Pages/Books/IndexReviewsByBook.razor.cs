@@ -37,10 +37,17 @@ public partial class IndexReviewsByBook : ComponentBase
 
         if (result is true)
         {
-            await Mediator.Send(new DeleteReviewCommand(reviewId));
-            
-            Snackbar.Add($"Review is successfully deleted!!", Severity.Success);
-            await OnInitializedAsync();
+            var response = await Mediator.Send(new DeleteReviewCommand(reviewId));
+
+            if (!response.IsSuccess)
+            {
+                Snackbar.Add($"{response.Message}", Severity.Error);
+            }
+            else
+            {
+                Snackbar.Add($"Review is successfully deleted!!", Severity.Success);
+                await OnInitializedAsync();
+            }
         }
     }
 

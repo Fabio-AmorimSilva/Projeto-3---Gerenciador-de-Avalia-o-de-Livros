@@ -35,12 +35,16 @@ public partial class Index : ComponentBase
         if (result is true)
         {
             var response = await Mediator.Send(new DeleteBookCommand(bookId));
-            
-            if(!response.IsSuccess)
+
+            if (!response.IsSuccess)
+            {
                 Snackbar.Add(response.Message, Severity.Error);
-            
-            Snackbar.Add("Book successfully deleted!!", Severity.Success);
-            await OnInitializedAsync();
+            }
+            else
+            {
+                Snackbar.Add("Book successfully deleted!!", Severity.Success);
+                await OnInitializedAsync();
+            }
         }
     }
 
