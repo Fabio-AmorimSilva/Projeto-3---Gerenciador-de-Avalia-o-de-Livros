@@ -1,0 +1,44 @@
+﻿@page "/reviews/create"
+
+<MudCard>
+    <MudCardContent>
+        <EditForm Model="ReviewInputModel" OnValidSubmit="OnValidSubmitAsync">
+            <MudTextField
+                @bind-Value="ReviewInputModel.Description"
+                For="@(() => ReviewInputModel.Description)"
+                Label="Description"
+                Placeholder="Insert description here....">
+            </MudTextField>
+            
+            <MudTextField
+                @bind-Value="ReviewInputModel.Score"
+                For="@(() => ReviewInputModel.Score)"
+                Label="Score"
+                Placeholder="Insert score here....." >
+            </MudTextField>
+            
+            <MudSelect
+                Label="Books"
+                @bind-Value="ReviewInputModel.BookId"
+                Variant="Variant.Outlined"
+                AnchorOrigin="Origin.BottomCenter"
+                For="@(() => ReviewInputModel.BookId)"
+                Text="">
+                
+                @foreach (var book in Books)
+                {
+                    <MudSelectItem Value="@book.Id">@book.Title</MudSelectItem>
+                }
+            </MudSelect>
+            
+            <MudButton
+                Variant="Variant.Outlined"
+                ButtonType="ButtonType.Submit"
+                Color="Color.Info"
+                StartIcon="@Icons.Material.Filled.Add"
+                Size="Size.Large">
+                Create
+            </MudButton>
+        </EditForm>
+    </MudCardContent>
+</MudCard>

@@ -1,0 +1,66 @@
+﻿@page "/books/create"
+
+<PageTitle>Create Book</PageTitle>
+
+<MudCard>
+    <EditForm Model="BookInputModel" OnValidSubmit="OnValidSubmitAsync">
+        <MudCardContent>
+            <MudTextField 
+                @bind-Value="BookInputModel.Title"
+                For="@(() => BookInputModel.Title)"
+                Label="Title"
+                Placeholder="Insert the title here... "/>
+
+            <MudTextField
+                @bind-Value="BookInputModel.Author"
+                For="@(() => BookInputModel.Author)"
+                Label="Author"
+                Placeholder="Insert the author here... "/>
+
+            <MudTextField
+                @bind-Value="BookInputModel.Description"
+                For="@(() => BookInputModel.Description)"
+                Label="Description"
+                Placeholder="Insert the description here... "/>
+
+            <MudTextField
+                @bind-Value="BookInputModel.Isbn"
+                For="@(() => BookInputModel.Isbn)"
+                Label="Isbn"
+                Placeholder="Insert the isbn here... "/>
+
+            <MudTextField
+                @bind-Value="BookInputModel.Genre"
+                For="@(() => BookInputModel.Genre)"
+                Label="Genre"
+                Placeholder="Insert the genre here... "/>
+
+            <MudTextField
+                @bind-Value="BookInputModel.Pages"
+                For="@(() => BookInputModel.Pages)"
+                Label="Pages"
+                Placeholder="Insert the pages here... "/>
+
+            <MudTextField
+                @bind-Value="BookInputModel.Publisher"
+                For="@(() => BookInputModel.Publisher)"
+                Label="Publisher"
+                Placeholder="Insert the publisher here... "/>
+
+            <MudDatePicker
+                @bind-Date="BookInputModel.PublishDate"
+                For="@(() => BookInputModel.PublishDate)"
+                Label="Publish Date"
+                DateFormat="dd/MM/yyyy"/>
+            
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Add"
+                Color="Color.Info"
+                Size="Size.Large"
+                ButtonType="ButtonType.Submit">
+                Create
+            </MudButton>
+        </MudCardContent>
+    </EditForm>    
+</MudCard>
