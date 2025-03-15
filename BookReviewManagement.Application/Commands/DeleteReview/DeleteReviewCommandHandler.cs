@@ -16,8 +16,7 @@ public sealed class DeleteReviewCommandHandler(IBookReviewManagementDbContext co
         if (review is null)
             return Result<Unit>.Error(ErrorMessages.NotFound<Review>());
 
-        book.DeleteReview(review);
-        
+        context.Reviews.Remove(review);
         await context.SaveChangesAsync(cancellationToken);
         
         return Result<Unit>.Success();
