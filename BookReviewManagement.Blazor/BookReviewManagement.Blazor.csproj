@@ -8,6 +8,18 @@
 
 
     <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.4.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="MudBlazor" Version="8.*"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\BookReviewManagement.Application\BookReviewManagement.Application.csproj" />
+      <ProjectReference Include="..\BookReviewManagement.Domain\BookReviewManagement.Domain.csproj" />
+      <ProjectReference Include="..\BookReviewManagement.Infrastructure\BookReviewManagement.Infrastructure.csproj" />
     </ItemGroup>
 </Project>
