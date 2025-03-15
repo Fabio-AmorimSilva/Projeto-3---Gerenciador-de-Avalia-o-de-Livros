@@ -23,6 +23,14 @@
             <CellTemplate>
                 <MudStack Row>
                     <MudButton
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.List"
+                        Color="Color.Info"
+                        Size="Size.Large"
+                        onclick="@(() => GoToReviews(context.Item.Id))">
+                        Reviews
+                    </MudButton>
+                    <MudButton
                         StartIcon="@Icons.Material.Filled.Edit"
                         Size="Size.Small"
                         Variant="Variant.Filled"
