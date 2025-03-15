@@ -20,6 +20,9 @@ public static class ErrorMessages
     public static string IsbnAlreadyExists()
         => "ISBN already exists.";
     
+    public static string EmailOrPasswordAreIncorrect()
+        => "Email or password is incorrect.";
+    
     public static string EmailAlreadyExists()
         => "Email already exists.";
 }
