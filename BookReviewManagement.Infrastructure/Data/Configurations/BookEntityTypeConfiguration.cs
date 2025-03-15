@@ -51,7 +51,7 @@ public sealed class BookEntityTypeConfiguration : IEntityTypeConfiguration<Book>
         
         builder
             .Property(b => b.Cover)
-            .IsRequired();
+            .IsRequired(false);
         
         builder
             .Property(b => b.Pages)
