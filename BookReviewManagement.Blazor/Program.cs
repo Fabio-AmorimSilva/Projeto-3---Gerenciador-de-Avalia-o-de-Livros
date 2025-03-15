@@ -1,7 +1,8 @@
-using MudBlazor.Services;
-using BookReviewManagement.Blazor.Components;
-
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
 
 // Add MudBlazor services
 builder.Services.AddMudServices();
