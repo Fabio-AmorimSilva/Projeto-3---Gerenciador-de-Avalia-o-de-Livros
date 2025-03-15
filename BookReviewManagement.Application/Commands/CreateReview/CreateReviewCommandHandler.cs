@@ -4,7 +4,7 @@ public sealed class CreateReviewCommandHandler(IBookReviewManagementDbContext co
 {
     public async Task<Result<Guid>> Handle(CreateReviewCommand request, CancellationToken cancellationToken)
     {
-        var user = await context.Users.FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
+        var user = await context.Users.FirstOrDefaultAsync(cancellationToken);
 
         if (user is null)
             return Result<Guid>.Error(ErrorMessages.NotFound<User>());
@@ -21,8 +21,7 @@ public sealed class CreateReviewCommandHandler(IBookReviewManagementDbContext co
             description: request.Description
         );
         
-        user.AddReview(review);
-        
+        await context.Reviews.AddAsync(review, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);
         
         return Result<Guid>.Success(review.Id);
