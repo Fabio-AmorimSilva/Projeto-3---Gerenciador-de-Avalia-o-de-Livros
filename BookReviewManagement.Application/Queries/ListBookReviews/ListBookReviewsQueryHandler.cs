@@ -5,7 +5,7 @@ public sealed class ListBookReviewsQueryHandler(IBookReviewManagementDbContext c
     public async Task<Result<IEnumerable<ListBookReviewsViewModel>>> Handle(ListBookReviewsQuery request, CancellationToken cancellationToken)
     {
         var reviews = await context.Books
-            .SelectMany(b => b.Reviews.Where(b => b.Id == request.BookId))
+            .SelectMany(b => b.Reviews.Where(r => r.BookId == request.BookId))
             .Select(r => new ListBookReviewsViewModel
             {
                 Id = r.Id,
