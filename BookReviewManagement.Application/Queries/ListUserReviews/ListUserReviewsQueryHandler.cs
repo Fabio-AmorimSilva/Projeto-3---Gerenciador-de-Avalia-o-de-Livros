@@ -6,10 +6,11 @@ public sealed class ListUserReviewsQueryHandler(IBookReviewManagementDbContext c
     public async Task<Result<IEnumerable<ListUserReviewsViewModel>>> Handle(ListUserReviewsQuery request, CancellationToken cancellationToken)
     {
         var reviews = await context.Users
-            .SelectMany(r => r.Reviews)
+            .SelectMany(u => u.Reviews.Where(r => r.UserId == request.UserId))
             .Select(r => new ListUserReviewsViewModel
             {
-                Name = r.User.Name,
+                Id = r.Id,
+                UserName = r.User.Name,
                 Title = r.Book.Title,
                 Description = r.Description,
                 Score = r.Score
