@@ -1,0 +1,33 @@
+﻿@page "/users/login"
+
+<MudCard>
+    <EditForm Model="@LoginInputModel" OnValidSubmit="OnValidSubmitAsync">
+        <MudCardContent>
+            
+            <MudTextField 
+                @bind-Value="LoginInputModel.Email"
+                For="@(() => LoginInputModel.Email)"
+                Label="Email" 
+                Placeholder="Insert email here...."/>
+                
+            <MudTextField 
+                @bind-Value="LoginInputModel.Password"
+                For="@(() => LoginInputModel.Password)"
+                Label="Password"
+                InputType="PasswordInputType"
+                Adornment="Adornment.End" 
+                AdornmentIcon="@PasswordInputIcon" 
+                OnAdornmentClick="PasswordTextField"
+                AdornmentAriaLabel="Show Password"
+                Placeholder="Insert password here..."/>
+            
+            <MudButton Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Filled.Save"
+                       Color="Color.Info"
+                       Size="Size.Large"
+                       ButtonType="ButtonType.Submit">
+                Login
+            </MudButton>
+        </MudCardContent>
+    </EditForm>
+</MudCard>
