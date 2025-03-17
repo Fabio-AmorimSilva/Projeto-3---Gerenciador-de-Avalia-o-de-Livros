@@ -11,7 +11,7 @@ public sealed record CreateBookCommand(
     int Pages
 ) : IRequest<Result<Guid>>;
 
-public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
+public sealed class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
 {
     public CreateBookCommandValidator()
     {
