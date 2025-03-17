@@ -1,4 +1,6 @@
 ﻿@page "/users/{userId:guid}/reviews"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 <MudButton
     Variant="Variant.Filled"

@@ -1,4 +1,6 @@
 ﻿@page "/users/update/{userId:guid}"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 <PageTitle>Update User</PageTitle>
 

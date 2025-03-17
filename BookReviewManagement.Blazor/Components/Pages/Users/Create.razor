@@ -1,4 +1,6 @@
 ﻿@page "/users/create"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 <MudCard>
     <EditForm Model="@UserInputModel" OnValidSubmit="OnValidSubmitAsync">
