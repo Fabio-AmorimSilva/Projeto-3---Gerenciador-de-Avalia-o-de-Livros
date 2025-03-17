@@ -85,4 +85,7 @@ public sealed class Book : Entity, IAuditableEntity
         PublishDate = publishDate;
         Pages = pages;
     }
+    
+    public Review? GetReview(Guid reviewId)
+        => _reviews.FirstOrDefault(r => r.Id == reviewId);
 }
