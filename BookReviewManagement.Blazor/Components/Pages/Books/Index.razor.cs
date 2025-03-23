@@ -15,7 +15,7 @@ public partial class Index : ComponentBase
     public ISnackbar Snackbar { get; set; }
 
     public IEnumerable<ListBookViewModel> Books { get; set; } = [];
-
+    
     protected override async Task OnInitializedAsync()
     {
         var books = await Mediator.Send(new ListBooksQuery());
@@ -50,11 +50,21 @@ public partial class Index : ComponentBase
 
     private void GoToUpdate(Guid bookId)
     {
-        Navigation.NavigateTo($"books/update/{bookId}");
+        Navigation.NavigateTo($"books/{bookId}/update");
     }
     
     private void GoToReviews(Guid bookId)
     {
         Navigation.NavigateTo($"books/{bookId}/reviews");
+    }
+
+    private void GoToUpdateCover(Guid bookId)
+    {
+        Navigation.NavigateTo($"/books/{bookId}/update-cover");
+    }
+
+    private string? GetCover(Guid bookId)
+    {
+        return Books.FirstOrDefault(b => b.Id == bookId)?.Cover;
     }
 }

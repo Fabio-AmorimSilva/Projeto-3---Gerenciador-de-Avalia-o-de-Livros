@@ -2,57 +2,78 @@
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
-<PageTitle>Books</PageTitle>
+<div class="page-container">
+    <PageTitle>Books</PageTitle>
 
-<MudText Typo="Typo.h3">Books</MudText>
+    <MudText Typo="Typo.h3" Class="page-title">Books</MudText>
 
-<MudButton
-    Variant="Variant.Filled"
-    StartIcon="@Icons.Material.Filled.Add"
-    Color="Color.Info"
-    Size="Size.Large"
-    Href="/books/create">
-    New Book
-</MudButton>
+    <MudButton
+        Variant="Variant.Filled"
+        StartIcon="@Icons.Material.Filled.Add"
+        Color="Color.Info"
+        Size="Size.Large"
+        Href="/books/create"
+        Class="action-button">
+        New Book
+    </MudButton>
 
-<MudDataGrid Items="Books">
-    <Columns>
-        <PropertyColumn Property="b => b.Isbn"></PropertyColumn>
-        <PropertyColumn Property="b => b.Title"></PropertyColumn>
-        <PropertyColumn Property="b => b.Description"></PropertyColumn>
-        <PropertyColumn Property="b => b.Author"></PropertyColumn>
-        <PropertyColumn Property="b => b.Genre"></PropertyColumn>
-        <PropertyColumn Property="b => b.Publisher"></PropertyColumn>
-        <PropertyColumn Property="b => b.PublishDate"></PropertyColumn>
-        <TemplateColumn>
-            <CellTemplate>
-                <MudStack Row>
-                    <MudButton
-                        Variant="Variant.Filled"
-                        StartIcon="@Icons.Material.Filled.List"
-                        Color="Color.Info"
-                        Size="Size.Large"
-                        onclick="@(() => GoToReviews(context.Item.Id))">
-                        Reviews
-                    </MudButton>
-                    <MudButton
-                        Variant="Variant.Filled"
-                        StartIcon="@Icons.Material.Filled.Edit"
-                        Color="Color.Info"
-                        Size="Size.Large"
-                        onclick="@(() => GoToUpdate(context.Item.Id))">
-                        Edit
-                    </MudButton>
-                    <MudButton
-                        Variant="Variant.Filled"
-                        StartIcon="@Icons.Material.Filled.Delete"
-                        Color="Color.Error"
-                        Size="Size.Large"
-                        onclick="@(() => DeleteBook(context.Item.Id))">
-                        Delete
-                    </MudButton>
-                </MudStack>
-            </CellTemplate>
-        </TemplateColumn>
-    </Columns>
-</MudDataGrid>
+    <MudDataGrid Items="Books" Class="data-grid table-bordered">
+        <Columns>
+            <PropertyColumn Property="b => b.Isbn" Title="ISBN"></PropertyColumn>
+            <PropertyColumn Property="b => b.Title" Title="Title"></PropertyColumn>
+            <PropertyColumn Property="b => b.Description" Title="Description"></PropertyColumn>
+            <PropertyColumn Property="b => b.Author" Title="Author"></PropertyColumn>
+            <PropertyColumn Property="b => b.Genre" Title="Genre"></PropertyColumn>
+            <PropertyColumn Property="b => b.Publisher" Title="Publisher"></PropertyColumn>
+            <PropertyColumn Property="b => b.PublishDate" Title="Publish Date"></PropertyColumn>
+            <TemplateColumn>
+                <CellTemplate>
+                    <div class="actions-container">
+                        <MudImage Src="@GetCover(context.Item.Id)" Class="cover-image">Cover</MudImage>
+                        <MudStack Row Class="action-stack">
+                            <MudButton
+                                Variant="Variant.Filled"
+                                StartIcon="@Icons.Material.Filled.List"
+                                Color="Color.Info"
+                                Size="Size.Small"
+                                Class="table-button"
+                                onclick="@(() => GoToReviews(context.Item.Id))">
+                                Reviews
+                            </MudButton>
+                            <MudButton
+                                Variant="Variant.Filled"
+                                StartIcon="@Icons.Material.Filled.Edit"
+                                Color="Color.Warning"
+                                Size="Size.Small"
+                                Class="table-button"
+                                onclick="@(() => GoToUpdate(context.Item.Id))">
+                                Edit
+                            </MudButton>
+                            <MudButton
+                                Variant="Variant.Filled"
+                                StartIcon="@Icons.Material.Filled.Edit"
+                                Color="Color.Warning"
+                                Size="Size.Small"
+                                Class="table-button"
+                                onclick="@(() => GoToUpdateCover(context.Item.Id))">
+                                Update Cover
+                            </MudButton>
+                            <MudButton
+                                Variant="Variant.Filled"
+                                StartIcon="@Icons.Material.Filled.Delete"
+                                Color="Color.Error"
+                                Size="Size.Small"
+                                Class="table-button"
+                                onclick="@(() => DeleteBook(context.Item.Id))">
+                                Delete
+                            </MudButton>
+                        </MudStack>
+                    </div>
+                </CellTemplate>
+            </TemplateColumn>
+        </Columns>
+    </MudDataGrid>
+</div>
+
+
+
