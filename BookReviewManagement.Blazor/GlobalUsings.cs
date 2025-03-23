@@ -12,6 +12,8 @@ global using BookReviewManagement.Application.Commands.DeleteBook;
 global using BookReviewManagement.Application.Commands.DeleteReview;
 global using BookReviewManagement.Application.Commands.DeleteUser;
 global using BookReviewManagement.Application.Commands.Login;
+global using BookReviewManagement.Application.Commands.UpdateBook;
+global using BookReviewManagement.Application.Commands.UpdateBookCover;
 global using BookReviewManagement.Application.Commands.UpdateUser;
 global using BookReviewManagement.Application.Queries.GetUser;
 global using BookReviewManagement.Application.Queries.ListBookReviews;
