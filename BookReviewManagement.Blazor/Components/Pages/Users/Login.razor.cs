@@ -42,6 +42,7 @@ public partial class Login : ComponentBase
             {
                 await LocalStorage.SetItemAsync("Bearer", response.Data);
                 await LocalStorage.SetItemAsync("userEmail", model.Email);
+                Navigation.NavigateTo("/");
                 AuthenticationStateProvider.StateChanged();
             }
         }
