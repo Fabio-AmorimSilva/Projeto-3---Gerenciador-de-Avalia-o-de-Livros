@@ -14,7 +14,8 @@ public sealed class ListBooksQueryHandler(IBookReviewManagementDbContext context
                 Author = b.Author,
                 Publisher = b.Publisher,
                 Genre = b.Genre,
-                PublishDate = b.PublishDate
+                PublishDate = b.PublishDate,
+                Cover = ListBookViewModel.ConvertByteToString(b.Cover)
             })
             .ToListAsync(cancellationToken);
 

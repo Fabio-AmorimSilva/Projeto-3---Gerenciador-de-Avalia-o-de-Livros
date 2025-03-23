@@ -9,5 +9,9 @@ public sealed record ListBookViewModel
     public required string Author { get; init; }
     public required string Publisher { get; init; }
     public required BookGenre Genre { get; init; }
-    public required DateTime PublishDate { get; init; }   
+    public required DateTime PublishDate { get; init; }  
+    public string? Cover { get; init; }
+
+    public static string ConvertByteToString(byte[] bytes)
+        => $"data:image/png;base64,{Convert.ToBase64String(bytes)}";
 }
