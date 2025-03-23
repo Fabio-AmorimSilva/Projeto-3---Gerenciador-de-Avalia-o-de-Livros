@@ -1,0 +1,66 @@
+﻿@page "/books/{bookId:guid}/update"
+
+<PageTitle>Edit</PageTitle>
+
+<MudCard>
+    <EditForm Model="BookUpdateModel" OnValidSubmit="OnValidSubmitAsync">
+        <MudCardContent>
+            <MudTextField 
+                @bind-Value="BookUpdateModel.Title"
+                For="@(() => BookUpdateModel.Title)"
+                Label="Title"
+                Placeholder="Insert the title here... "/>
+
+            <MudTextField
+                @bind-Value="BookUpdateModel.Author"
+                For="@(() => BookUpdateModel.Author)"
+                Label="Author"
+                Placeholder="Insert the author here... "/>
+
+            <MudTextField
+                @bind-Value="BookUpdateModel.Description"
+                For="@(() => BookUpdateModel.Description)"
+                Label="Description"
+                Placeholder="Insert the description here... "/>
+
+            <MudTextField
+                @bind-Value="BookUpdateModel.Isbn"
+                For="@(() => BookUpdateModel.Isbn)"
+                Label="Isbn"
+                Placeholder="Insert the isbn here... "/>
+
+            <MudTextField
+                @bind-Value="BookUpdateModel.Genre"
+                For="@(() => BookUpdateModel.Genre)"
+                Label="Genre"
+                Placeholder="Insert the genre here... "/>
+
+            <MudTextField
+                @bind-Value="BookUpdateModel.Pages"
+                For="@(() => BookUpdateModel.Pages)"
+                Label="Pages"
+                Placeholder="Insert the pages here... "/>
+
+            <MudTextField
+                @bind-Value="BookUpdateModel.Publisher"
+                For="@(() => BookUpdateModel.Publisher)"
+                Label="Publisher"
+                Placeholder="Insert the publisher here... "/>
+
+            <MudDatePicker
+                @bind-Date="BookUpdateModel.PublishDate"
+                For="@(() => BookUpdateModel.PublishDate)"
+                Label="Publish Date"
+                DateFormat="dd/MM/yyyy"/>
+            
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Add"
+                Color="Color.Info"
+                Size="Size.Large"
+                ButtonType="ButtonType.Submit">
+                Update
+            </MudButton>
+        </MudCardContent>
+    </EditForm>    
+</MudCard>
