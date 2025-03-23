@@ -88,4 +88,7 @@ public sealed class Book : Entity, IAuditableEntity
     
     public Review? GetReview(Guid reviewId)
         => _reviews.FirstOrDefault(r => r.Id == reviewId);
+    
+    public void UpdateCover(byte[] cover)
+        => Cover = cover;
 }
