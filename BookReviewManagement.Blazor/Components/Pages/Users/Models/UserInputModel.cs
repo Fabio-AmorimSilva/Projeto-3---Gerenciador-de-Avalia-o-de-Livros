@@ -1,4 +1,4 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Users;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Users.Models;
 
 public sealed record UserInputModel
 {

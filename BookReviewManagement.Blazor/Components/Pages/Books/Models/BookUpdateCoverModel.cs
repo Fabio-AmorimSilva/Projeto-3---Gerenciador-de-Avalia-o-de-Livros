@@ -1,4 +1,4 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Books.Models;
 
 public sealed record BookUpdateCoverModel
 {

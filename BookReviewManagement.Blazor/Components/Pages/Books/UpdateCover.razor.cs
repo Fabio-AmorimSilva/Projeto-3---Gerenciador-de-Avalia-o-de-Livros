@@ -1,4 +1,6 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿using BookReviewManagement.Blazor.Components.Pages.Books.Models;
+
+namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
 public partial class UpdateCover : ComponentBase
 {

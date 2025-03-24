@@ -1,4 +1,6 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Users;
+﻿using BookReviewManagement.Blazor.Components.Pages.Users.Models;
+
+namespace BookReviewManagement.Blazor.Components.Pages.Users;
 
 public partial class Login : ComponentBase
 {

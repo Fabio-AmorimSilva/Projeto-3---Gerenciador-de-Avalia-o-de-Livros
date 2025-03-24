@@ -1,6 +1,6 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Books.Models;
 
-public sealed record BookInputModel
+public sealed record BookUpdateModel
 {
     public string Title { get; set; } = null!;
     public string Description { get; set; } = null!;
