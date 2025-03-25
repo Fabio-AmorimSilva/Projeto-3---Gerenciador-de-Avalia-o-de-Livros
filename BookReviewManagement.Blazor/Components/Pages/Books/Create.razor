@@ -4,63 +4,75 @@
 
 <PageTitle>Create Book</PageTitle>
 
-<MudCard>
+<MudCard class="d-flex justify-content-center align-items-center vh-100 form-card">
     <EditForm Model="BookInputModel" OnValidSubmit="OnValidSubmitAsync">
-        <MudCardContent>
-            <MudTextField 
+        <MudCardContent Class="form-content card p-4 shadow rounded" Style="max-width: 400px; width: 100%;">
+            <div class="mb-4 text-center">
+                <h4>Create Book</h4>
+            </div>
+            <MudTextField
                 @bind-Value="BookInputModel.Title"
                 For="@(() => BookInputModel.Title)"
                 Label="Title"
-                Placeholder="Insert the title here... "/>
+                Placeholder="Insert the title here... "
+                Class="form-input"/>
 
             <MudTextField
                 @bind-Value="BookInputModel.Author"
                 For="@(() => BookInputModel.Author)"
                 Label="Author"
-                Placeholder="Insert the author here... "/>
+                Placeholder="Insert the author here... "
+                Class="form-input"/>
 
             <MudTextField
                 @bind-Value="BookInputModel.Description"
                 For="@(() => BookInputModel.Description)"
                 Label="Description"
-                Placeholder="Insert the description here... "/>
+                Placeholder="Insert the description here... "
+                Class="form-input"/>
 
             <MudTextField
                 @bind-Value="BookInputModel.Isbn"
                 For="@(() => BookInputModel.Isbn)"
                 Label="Isbn"
-                Placeholder="Insert the isbn here... "/>
+                Placeholder="Insert the isbn here... "
+                Class="form-input"/>
 
             <MudTextField
                 @bind-Value="BookInputModel.Genre"
                 For="@(() => BookInputModel.Genre)"
                 Label="Genre"
-                Placeholder="Insert the genre here... "/>
+                Placeholder="Insert the genre here... "
+                Class="form-input"/>
 
             <MudTextField
                 @bind-Value="BookInputModel.Pages"
                 For="@(() => BookInputModel.Pages)"
                 Label="Pages"
-                Placeholder="Insert the pages here... "/>
+                Placeholder="Insert the pages here... "
+                Class="form-input"/>
 
             <MudTextField
                 @bind-Value="BookInputModel.Publisher"
                 For="@(() => BookInputModel.Publisher)"
                 Label="Publisher"
-                Placeholder="Insert the publisher here... "/>
+                Placeholder="Insert the publisher here... "
+                Class="form-input"/>
 
             <MudDatePicker
                 @bind-Date="BookInputModel.PublishDate"
                 For="@(() => BookInputModel.PublishDate)"
                 Label="Publish Date"
-                DateFormat="dd/MM/yyyy"/>
-            
+                DateFormat="dd/MM/yyyy"
+                Class="form-input"/>
+
             <MudButton
                 Variant="Variant.Filled"
                 StartIcon="@Icons.Material.Filled.Add"
                 Color="Color.Info"
-                Size="Size.Large"
-                ButtonType="ButtonType.Submit">
+                Size="Size.Small"
+                ButtonType="ButtonType.Submit"
+                Class="action-button">
                 Create
             </MudButton>
         </MudCardContent>
