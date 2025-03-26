@@ -16,7 +16,7 @@ public sealed class Book : Entity, IAuditableEntity
     public DateTime PublishDate { get; private set; }
     public int Pages { get; private set; }
     public decimal Score { get; private set; }
-    public byte[] Cover { get; private set; }
+    public byte[]? Cover { get; private set; }
     public DateTime CreatedAt { get; set; }
     
     public IReadOnlyCollection<Review> Reviews => _reviews;

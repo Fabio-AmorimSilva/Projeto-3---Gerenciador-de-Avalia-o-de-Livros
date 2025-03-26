@@ -7,7 +7,7 @@ public sealed record BookInputModel
     public string Isbn { get; set; } = null!;
     public string Author { get; set; } = null!;
     public string Publisher { get; set; } = null!;
-    public BookGenre Genre { get; set; }
+    public BookGenre Genre { get; set; } = BookGenre.Adventure;
     public DateTime? PublishDate { get; set; }
     public int Pages { get; set; }
 }

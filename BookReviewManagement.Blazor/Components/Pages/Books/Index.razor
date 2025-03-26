@@ -6,17 +6,30 @@
     <PageTitle>Books</PageTitle>
 
     <MudText Typo="Typo.h3" Class="page-title">Books</MudText>
-
-    <MudButton
-        Variant="Variant.Filled"
-        StartIcon="@Icons.Material.Filled.Add"
-        Color="Color.Info"
-        Size="Size.Large"
-        Href="/books/create"
-        Class="action-button">
-        New Book
-    </MudButton>
-
+    
+    <div class="actions-container">
+        <MudStack Row Class="action-stack">
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Add"
+                Color="Color.Info"
+                Size="Size.Small"
+                Href="/books/create"
+                Class="action-button">
+                New Book
+            </MudButton>
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Add"
+                Color="Color.Info"
+                Size="Size.Small"
+                Href="/reviews/create"
+                Class="action-button">
+                New Review
+            </MudButton>
+        </MudStack>
+    </div>
+    
     <MudDataGrid Items="Books" Class="data-grid table-bordered">
         <Columns>
             <PropertyColumn Property="b => b.Isbn" Title="ISBN"></PropertyColumn>

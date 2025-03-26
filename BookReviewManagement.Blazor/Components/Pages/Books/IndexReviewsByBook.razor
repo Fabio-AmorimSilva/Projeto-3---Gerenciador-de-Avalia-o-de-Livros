@@ -6,17 +6,7 @@
     <PageTitle>Reviews</PageTitle>
 
     <MudText Typo="Typo.h3" Class="page-title">Reviews</MudText>
-
-    <MudButton
-        Variant="Variant.Filled"
-        StartIcon="@Icons.Material.Filled.Add"
-        Color="Color.Info"
-        Size="Size.Small"
-        Href="/reviews/create"
-        Class="action-button">
-        New Review
-    </MudButton>
-
+    
     <MudDataGrid Items="Reviews" Class="data-grid table-bordered">
         <Columns>
             <PropertyColumn Property="r => r.Title" Title="Book"></PropertyColumn>

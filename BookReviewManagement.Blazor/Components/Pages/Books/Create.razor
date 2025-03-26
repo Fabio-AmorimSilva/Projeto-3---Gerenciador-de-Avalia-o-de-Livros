@@ -38,12 +38,19 @@
                 Placeholder="Insert the isbn here... "
                 Class="form-input"/>
 
-            <MudTextField
-                @bind-Value="BookInputModel.Genre"
-                For="@(() => BookInputModel.Genre)"
+            <MudSelect
                 Label="Genre"
-                Placeholder="Insert the genre here... "
-                Class="form-input"/>
+                @bind-Value="BookInputModel.Genre"
+                Variant="Variant.Outlined"
+                AnchorOrigin="Origin.BottomCenter"
+                For="@(() => BookInputModel.Genre)"
+                Class="form-input">
+
+                @foreach (var genre in Enum.GetValues(typeof(BookGenre)))
+                {
+                    <MudSelectItem Class="dropdown-item" Value="(BookGenre)genre">@genre</MudSelectItem>
+                }
+            </MudSelect>
 
             <MudTextField
                 @bind-Value="BookInputModel.Pages"

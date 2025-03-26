@@ -3,6 +3,7 @@
 global using System.Net.Http.Headers;
 global using System.Security.Claims;
 global using System.Text.Json;
+global using System.Text.Json.Serialization;
 global using Blazored.LocalStorage;
 global using BookReviewManagement.Application;
 global using BookReviewManagement.Application.Commands.CreateBook;
