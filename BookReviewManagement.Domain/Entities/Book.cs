@@ -91,4 +91,9 @@ public sealed class Book : Entity, IAuditableEntity
     
     public void UpdateCover(byte[] cover)
         => Cover = cover;
+
+    public decimal AverageScore()
+    {
+        return (decimal)_reviews.Average(r => r.Score);
+    }
 }

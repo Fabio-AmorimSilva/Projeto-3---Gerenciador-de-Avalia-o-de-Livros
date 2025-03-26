@@ -5,6 +5,8 @@ public sealed class ListBooksQueryHandler(IBookReviewManagementDbContext context
     public async Task<Result<IEnumerable<ListBookViewModel>>> Handle(ListBooksQuery request, CancellationToken cancellationToken)
     {
         var books = await context.Books
+            .AsNoTrackingWithIdentityResolution()
+            .Include(b => b.Reviews)
             .Select(b => new ListBookViewModel
             {
                 Id = b.Id,
@@ -15,6 +17,7 @@ public sealed class ListBooksQueryHandler(IBookReviewManagementDbContext context
                 Publisher = b.Publisher,
                 Genre = b.Genre,
                 PublishDate = b.PublishDate,
+                Score = b.AverageScore(),
                 Cover = ListBookViewModel.ConvertByteToString(b.Cover)
             })
             .ToListAsync(cancellationToken);
