@@ -1,4 +1,6 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿using BookReviewManagement.Application.Queries.ListBooksReadCountOverTheYear;
+
+namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
 public partial class Index : ComponentBase
 {
@@ -15,11 +17,17 @@ public partial class Index : ComponentBase
     public ISnackbar Snackbar { get; set; }
 
     public IEnumerable<ListBookViewModel> Books { get; set; } = [];
+
+    private int ReadCountCurrentYear { get; set; }
     
     protected override async Task OnInitializedAsync()
     {
         var books = await Mediator.Send(new ListBooksQuery());
-        
+        var readCount = await Mediator.Send(new ListBooksReadCountOverTheYearQuery());
+
+        if (readCount.Data != null)
+            ReadCountCurrentYear = readCount.Data.BooksCount;
+
         Books = books.Data ?? [];
     }
 

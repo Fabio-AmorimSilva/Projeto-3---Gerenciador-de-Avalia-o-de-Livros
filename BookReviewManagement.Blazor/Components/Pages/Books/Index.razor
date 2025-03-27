@@ -30,6 +30,10 @@
         </MudStack>
     </div>
     
+    <div class="left-align">
+        <MudText >Books Read Count: @ReadCountCurrentYear</MudText>
+    </div>
+    
     <MudDataGrid Items="Books" Class="data-grid table-bordered">
         <Columns>
             <PropertyColumn Property="b => b.Isbn" Title="ISBN"></PropertyColumn>
