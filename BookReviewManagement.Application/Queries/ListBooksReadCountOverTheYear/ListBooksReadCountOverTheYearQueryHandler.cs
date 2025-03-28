@@ -5,8 +5,11 @@ public sealed class ListBooksReadCountOverTheYearQueryHandler(IBookReviewManagem
 {
     public async Task<Result<ListBooksReadCountOverTheYearViewModel>> Handle(ListBooksReadCountOverTheYearQuery request, CancellationToken cancellationToken)
     {
-        var booksCount = await context.Books
-            .Where(b => b.CreatedAt.Year == DateTime.Now.Year)
+        var booksCount = await context.Reviews
+            .AsNoTracking()
+            .Where(r => r.CreatedAt.Year == DateTime.Now.Year)
+            .Select(r => r.Id)
+            .Distinct()
             .CountAsync(cancellationToken);
 
         return Result<ListBooksReadCountOverTheYearViewModel>.Success(new ListBooksReadCountOverTheYearViewModel

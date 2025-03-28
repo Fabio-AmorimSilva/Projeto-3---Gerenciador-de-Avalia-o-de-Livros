@@ -6,7 +6,7 @@
     <PageTitle>Books</PageTitle>
 
     <MudText Typo="Typo.h3" Class="page-title">Books</MudText>
-    
+
     <div class="actions-container">
         <MudStack Row Class="action-stack">
             <MudButton
@@ -29,69 +29,51 @@
             </MudButton>
         </MudStack>
     </div>
-    
+
     <div class="left-align">
-        <MudText >Books Read Count: @ReadCountCurrentYear</MudText>
+        <MudText>Books Read Count: @ReadCountCurrentYear</MudText>
     </div>
-    
-    <MudDataGrid Items="Books" Class="data-grid table-bordered">
-        <Columns>
-            <PropertyColumn Property="b => b.Isbn" Title="ISBN"></PropertyColumn>
-            <PropertyColumn Property="b => b.Title" Title="Title"></PropertyColumn>
-            <PropertyColumn Property="b => b.Description" Title="Description"></PropertyColumn>
-            <PropertyColumn Property="b => b.Author" Title="Author"></PropertyColumn>
-            <PropertyColumn Property="b => b.Genre" Title="Genre"></PropertyColumn>
-            <PropertyColumn Property="b => b.Publisher" Title="Publisher"></PropertyColumn>
-            <PropertyColumn Property="b => b.PublishDate" Title="Publish Date"></PropertyColumn>
-            <PropertyColumn Property="b => b.Score" Title="Score"></PropertyColumn>
-            <TemplateColumn>
-                <CellTemplate>
-                    <div class="actions-container">
-                        <MudImage Src="@GetCover(context.Item.Id)" Class="cover-image">Cover</MudImage>
-                        <MudStack Row Class="action-stack">
-                            <MudButton
-                                Variant="Variant.Filled"
-                                StartIcon="@Icons.Material.Filled.List"
-                                Color="Color.Info"
-                                Size="Size.Small"
-                                Class="table-button"
-                                onclick="@(() => GoToReviews(context.Item.Id))">
+
+    <MudGrid Class="catalog-grid" Spacing="2">
+        @foreach (var book in Books)
+        {
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudCard Class="book-card">
+                    <MudImage Src="@GetCover(book.Id)" Class="cover-image" Alt="Book Cover" />
+                    <MudSpacer />
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6" Class="book-title">@book.Title</MudText>
+                        <MudText Typo="Typo.body2" Class="book-author">By: @book.Author</MudText>
+                        <MudText Typo="Typo.caption" Class="book-genre">Genre: @book.Genre</MudText>
+                        <MudText Typo="Typo.body2" Class="book-description">@book.Description</MudText>
+                    </MudCardContent>
+
+                    <MudCardActions Class="card-actions">
+                        <MudExpansionPanel Class="actions-expansion" Icon="@Icons.Material.Filled.ViewList" DisableToggleIcon="true">
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => GoToReviews(book.Id))">
                                 Reviews
-                            </MudButton>
-                            <MudButton
-                                Variant="Variant.Filled"
-                                StartIcon="@Icons.Material.Filled.Edit"
-                                Color="Color.Warning"
-                                Size="Size.Small"
-                                Class="table-button"
-                                onclick="@(() => GoToUpdate(context.Item.Id))">
+                            </MudLink>
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => GoToUpdate(book.Id))">
                                 Edit
-                            </MudButton>
-                            <MudButton
-                                Variant="Variant.Filled"
-                                StartIcon="@Icons.Material.Filled.Edit"
-                                Color="Color.Warning"
-                                Size="Size.Small"
-                                Class="table-button"
-                                onclick="@(() => GoToUpdateCover(context.Item.Id))">
+                            </MudLink>
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => GoToUpdateCover(book.Id))">
                                 Update Cover
-                            </MudButton>
-                            <MudButton
-                                Variant="Variant.Filled"
-                                StartIcon="@Icons.Material.Filled.Delete"
-                                Color="Color.Error"
-                                Size="Size.Small"
-                                Class="table-button"
-                                onclick="@(() => DeleteBook(context.Item.Id))">
+                            </MudLink>
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => DeleteBook(book.Id))">
                                 Delete
-                            </MudButton>
-                        </MudStack>
-                    </div>
-                </CellTemplate>
-            </TemplateColumn>
-        </Columns>
-    </MudDataGrid>
+                            </MudLink>
+                        </MudExpansionPanel>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
 </div>
-
-
-

@@ -1,4 +1,4 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Reviews;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Reviews.Models;
 
 public sealed record ReviewInputModel
 {

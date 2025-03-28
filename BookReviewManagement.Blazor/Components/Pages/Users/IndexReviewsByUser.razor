@@ -3,25 +3,24 @@
 @attribute [Authorize]
 
 <div class="page-container">
-    
     <PageTitle>Reviews</PageTitle>
 
     <MudText Typo="Typo.h3" Class="page-title">Reviews</MudText>
 
-    <MudDataGrid Items="Reviews" Class="data-grid table-bordered">
+    <MudDataGrid Items="Reviews" Class="reviews-data-grid">
         <Columns>
-            <PropertyColumn Property="r => r.Title" Title="Book"></PropertyColumn>
-            <PropertyColumn Property="r => r.UserName" Title="User"></PropertyColumn>
-            <PropertyColumn Property="r => r.Description" Title="Description"></PropertyColumn>
-            <PropertyColumn Property="r => r.Score" Title="Score"></PropertyColumn>
+            <PropertyColumn Property="r => r.Title" Title="Book" Class="column-book"></PropertyColumn>
+            <PropertyColumn Property="r => r.UserName" Title="User" Class="column-user"></PropertyColumn>
+            <PropertyColumn Property="r => r.Description" Title="Description" Class="column-description"></PropertyColumn>
+            <PropertyColumn Property="r => r.Score" Title="Score" Class="column-score"></PropertyColumn>
             <TemplateColumn Class="d-flex justify-end">
                 <CellTemplate>
                     <div class="actions-container">
                         <MudStack Row Class="action-stack">
                             <MudButton
                                 Variant="Variant.Filled"
-                                StartIcon="@Icons.Material.Filled.Add"
-                                Color="Color.Info"
+                                StartIcon="@Icons.Material.Filled.Edit"
+                                Color="Color.Warning"
                                 Size="Size.Small"
                                 onclick="@(() => GoToUpdate(context.Item.Id))"
                                 Class="action-button">
@@ -30,7 +29,7 @@
                             <MudButton
                                 Variant="Variant.Filled"
                                 StartIcon="@Icons.Material.Filled.Delete"
-                                Color="Color.Warning"
+                                Color="Color.Error"
                                 Size="Size.Small"
                                 onclick="@(() => DeleteReviewAsync(context.Item.Id))"
                                 Class="action-button">

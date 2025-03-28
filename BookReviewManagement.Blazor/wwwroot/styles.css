@@ -60,56 +60,6 @@
     padding: 12px;
     font-size: 14px;
     color: #555;
-}
-
-.action-stack {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-start;
-}
-
-.action-button {
-    margin-bottom: 20px;
-    align-self: flex-end;
-    padding: 10px 20px;
-    border-radius: 8px;
-}
-
-.data-grid {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
-    border-radius: 8px;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.data-grid thead {
-    background-color: #007bff;
-    color: white;
-    text-align: left;
-}
-
-.data-grid th {
-    padding: 12px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.data-grid tbody tr {
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s ease;
-}
-
-.data-grid tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-.data-grid td {
-    padding: 12px;
-    font-size: 14px;
-    color: #555;
     vertical-align: middle;
 }
 
@@ -211,67 +161,112 @@
     text-transform: uppercase;
 }
 
-.page-container {
+.book-card {
+    background-color: white;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    box-sizing: border-box;
-    width: 100%;
-    overflow-x: hidden;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-.page-title {
+.cover-image {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30%;
+    height: 30%;
+    object-fit: cover;
+}
+
+.book-title {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.book-author {
+    color: #666;
+}
+
+.book-genre {
+    color: #aaa;
+}
+
+.catalog-button {
+    margin-right: 5px;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
     margin: 0;
-    text-align: left;
-    font-size: 1.5rem;
 }
 
-.action-button {
-    align-self: flex-start;
-}
-
-.data-grid {
+.actions-expansion {
     width: 100%;
-    table-layout: auto;
+    padding: 0;
+    background-color: transparent;
+}
+
+.action-link {
+    display: block;
+    text-align: left;
+    padding: 5px 0;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.reviews-data-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.reviews-data-grid .mud-table-row {
+    border-bottom: 1px solid #ddd;
+}
+
+.reviews-data-grid .mud-table-head th {
+    background-color: #1976d2;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.reviews-data-grid .mud-table-body td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    background-color: transparent;
 }
 
 .actions-container {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.cover-image {
-    max-width: 50px;
-    max-height: 75px;
-    object-fit: cover;
-    border-radius: 4px;
+.action-button {
+    font-size: 12px;
+    padding: 6px 10px;
+    min-width: auto;
 }
 
-.action-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+.mud-button {
+    margin: 0;
 }
 
-.table-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-.page-container .data-grid {
-    margin: 0 auto;
-    max-width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #ffffff;
-}
-
-.left-align {
-    text-align: left;
-    margin-left: 1000px;
-    padding-left: 0;
+.mud-table-cell {
+    padding: 10px;
 }

@@ -16,12 +16,12 @@
         Variant="Variant.Filled"
         Color="Color.Info"
         Class="action-button">
-        Create
+        New User
     </MudButton>
 
     <MudDataGrid Items="Users" Class="data-grid table-bordered">
         <Columns>
-            <PropertyColumn Property="u => u.Name" Title="UserName"></PropertyColumn>
+            <PropertyColumn Property="u => u.Name" Title="User"></PropertyColumn>
             <PropertyColumn Property="u => u.Email"></PropertyColumn>
             <TemplateColumn CellClass="d-flex justify-end">
                 <CellTemplate>

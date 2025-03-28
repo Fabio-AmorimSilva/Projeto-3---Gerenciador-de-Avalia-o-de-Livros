@@ -33,4 +33,5 @@ global using Microsoft.AspNetCore.Components.Forms;
 global using MudBlazor;
 global using MudBlazor.Services;
 global using BookReviewManagement.Blazor.Components.Layout;
+global using BookReviewManagement.Blazor.Components.Pages.Reviews.Models;
 global using Microsoft.AspNetCore.Components.Authorization;
