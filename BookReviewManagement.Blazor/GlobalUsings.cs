@@ -19,6 +19,7 @@ global using BookReviewManagement.Application.Commands.UpdateUser;
 global using BookReviewManagement.Application.Queries.GetUser;
 global using BookReviewManagement.Application.Queries.ListBookReviews;
 global using BookReviewManagement.Application.Queries.ListBooks;
+global using BookReviewManagement.Application.Queries.ListBooksReadCountOverTheYear;
 global using BookReviewManagement.Application.Queries.ListUserReviews;
 global using BookReviewManagement.Application.Queries.ListUsers;
 global using BookReviewManagement.Blazor.Auth;

@@ -1,25 +1,19 @@
-﻿using BookReviewManagement.Application.Queries.ListBooksReadCountOverTheYear;
-
-namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
 public partial class Index : ComponentBase
 {
-    [Inject]
-    public NavigationManager Navigation { get; set; }
-    
-    [Inject]
-    public IMediator Mediator { get; set; }
-    
-    [Inject]
-    public IDialogService DialogService { get; set; }
-    
-    [Inject]
-    public ISnackbar Snackbar { get; set; }
+    [Inject] public NavigationManager Navigation { get; set; }
+
+    [Inject] public IMediator Mediator { get; set; }
+
+    [Inject] public IDialogService DialogService { get; set; }
+
+    [Inject] public ISnackbar Snackbar { get; set; }
 
     public IEnumerable<ListBookViewModel> Books { get; set; } = [];
 
     private int ReadCountCurrentYear { get; set; }
-    
+
     protected override async Task OnInitializedAsync()
     {
         var books = await Mediator.Send(new ListBooksQuery());
@@ -60,7 +54,7 @@ public partial class Index : ComponentBase
     {
         Navigation.NavigateTo($"books/{bookId}/update");
     }
-    
+
     private void GoToReviews(Guid bookId)
     {
         Navigation.NavigateTo($"books/{bookId}/reviews");
@@ -69,10 +63,5 @@ public partial class Index : ComponentBase
     private void GoToUpdateCover(Guid bookId)
     {
         Navigation.NavigateTo($"/books/{bookId}/update-cover");
-    }
-
-    private string? GetCover(Guid bookId)
-    {
-        return Books.FirstOrDefault(b => b.Id == bookId)?.Cover;
     }
 }
