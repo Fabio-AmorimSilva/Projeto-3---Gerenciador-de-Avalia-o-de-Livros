@@ -17,8 +17,7 @@ public sealed class ListBooksQueryHandler(IBookReviewManagementDbContext context
                 Publisher = b.Publisher,
                 Genre = b.Genre,
                 PublishDate = b.PublishDate,
-                Score = b.AverageScore(),
-                Cover = ListBookViewModel.ConvertByteToString(b.Cover)
+                Score = b.AverageScore()
             })
             .ToListAsync(cancellationToken);
 

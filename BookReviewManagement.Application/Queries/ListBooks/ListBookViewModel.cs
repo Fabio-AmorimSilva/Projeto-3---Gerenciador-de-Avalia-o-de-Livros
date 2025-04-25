@@ -11,10 +11,4 @@ public sealed record ListBookViewModel
     public required BookGenre Genre { get; init; }
     public required DateTime PublishDate { get; init; }
     public required decimal? Score { get; init; } = 0;
-    public string? Cover { get; init; }
-
-    public static string ConvertByteToString(byte[]? bytes)
-    {
-        return bytes != null ? $"data:image/png;base64,{Convert.ToBase64String(bytes)}" : string.Empty;
-    }
 }
