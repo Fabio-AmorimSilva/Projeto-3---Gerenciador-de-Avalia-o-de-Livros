@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<IPasswordHashService, PasswordHashService>();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IReportsService, ReportsService>();
 
         services.AddJwtConfig(configuration);
         
