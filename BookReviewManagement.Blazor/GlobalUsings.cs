@@ -1,6 +1,4 @@
-﻿// Global using directives
-
-global using System.Net.Http.Headers;
+﻿global using System.Net.Http.Headers;
 global using System.Security.Claims;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
@@ -20,6 +18,7 @@ global using BookReviewManagement.Application.Queries.GetUser;
 global using BookReviewManagement.Application.Queries.ListBookReviews;
 global using BookReviewManagement.Application.Queries.ListBooks;
 global using BookReviewManagement.Application.Queries.ListBooksReadCountOverTheYear;
+global using BookReviewManagement.Application.Queries.ListBooksReports;
 global using BookReviewManagement.Application.Queries.ListUserReviews;
 global using BookReviewManagement.Application.Queries.ListUsers;
 global using BookReviewManagement.Blazor.Auth;
@@ -36,3 +35,4 @@ global using MudBlazor.Services;
 global using BookReviewManagement.Blazor.Components.Layout;
 global using BookReviewManagement.Blazor.Components.Pages.Reviews.Models;
 global using Microsoft.AspNetCore.Components.Authorization;
+global using Microsoft.AspNetCore.Mvc;

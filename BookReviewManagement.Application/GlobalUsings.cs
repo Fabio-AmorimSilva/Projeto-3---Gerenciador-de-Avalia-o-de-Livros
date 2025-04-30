@@ -8,9 +8,11 @@ global using BookReviewManagement.Domain.Common;
 global using BookReviewManagement.Domain.Entities;
 global using BookReviewManagement.Domain.Enums;
 global using BookReviewManagement.Domain.Messages;
+global using BookReviewManagement.Domain.Services.Reports;
 global using BookReviewManagement.Domain.Specifications;
 global using FluentValidation;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
+
