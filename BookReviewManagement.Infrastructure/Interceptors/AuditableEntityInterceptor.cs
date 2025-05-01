@@ -2,14 +2,20 @@
 
 public sealed class AuditableEntityInterceptor : SaveChangesInterceptor
 {
-    public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
+    public override InterceptionResult<int> SavingChanges(
+        DbContextEventData eventData,
+        InterceptionResult<int> result
+    )
     {
         SetCreateInfo(eventData.Context);
         return base.SavingChanges(eventData, result);
     }
 
-    public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result,
-        CancellationToken cancellationToken = new CancellationToken())
+    public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
+        DbContextEventData eventData,
+        InterceptionResult<int> result,
+        CancellationToken cancellationToken = new()
+    )
     {
         SetCreateInfo(eventData.Context);
         return base.SavingChangesAsync(eventData, result, cancellationToken);
@@ -19,8 +25,7 @@ public sealed class AuditableEntityInterceptor : SaveChangesInterceptor
     {
         if (context is null)
             return;
-
-
+        
         if (context.ChangeTracker.Entries().All(e => e.State != EntityState.Added))
             return;
 
@@ -29,8 +34,6 @@ public sealed class AuditableEntityInterceptor : SaveChangesInterceptor
             .Where(e => e.State == EntityState.Added);
 
         foreach (var entry in createdEntities)
-        {
             entry.Entity.CreatedAt = DateTime.Now;
-        }
     }
 }
