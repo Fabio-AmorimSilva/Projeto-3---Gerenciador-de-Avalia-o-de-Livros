@@ -2,6 +2,20 @@
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
+<script>
+    window.downloadFileFromStream = async (fileName, contentStreamReference) => {
+        const arrayBuffer = await contentStreamReference.arrayBuffer();
+        const blob = new Blob([arrayBuffer]);
+        const url = URL.createObjectURL(blob);
+        const anchorElement = document.createElement('a');
+        anchorElement.href = url;
+        anchorElement.download = fileName ?? '';
+        anchorElement.click();
+        anchorElement.remove();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
 <div class="page-container">
     <PageTitle>Books</PageTitle>
 
@@ -12,7 +26,7 @@
             <MudButton
                 Variant="Variant.Filled"
                 StartIcon="@Icons.Material.Filled.Add"
-                Color="Color.Info"
+                Color="Color.Dark"
                 Size="Size.Small"
                 Href="/books/create"
                 Class="action-button">
@@ -21,7 +35,7 @@
             <MudButton
                 Variant="Variant.Filled"
                 StartIcon="@Icons.Material.Filled.Add"
-                Color="Color.Info"
+                Color="Color.Dark"
                 Size="Size.Small"
                 Href="/reviews/create"
                 Class="action-button">
@@ -30,8 +44,16 @@
         </MudStack>
     </div>
 
+    <MudButton 
+        StartIcon="@Icons.Material.Filled.Download" 
+        @onclick="DownloadFileFromStream"
+        Color="Color.Info"
+        Size="Size.Small">
+        Books
+    </MudButton>
+    
     <div class="left-align">
-        <MudText>Books Read Count: @ReadCountCurrentYear</MudText>
+        <MudText>Books Read this year: @ReadCountCurrentYear</MudText>
     </div>
 
     <MudGrid Class="catalog-grid" Spacing="2">
