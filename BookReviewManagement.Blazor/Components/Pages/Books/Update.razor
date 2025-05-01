@@ -1,66 +1,91 @@
 ﻿@page "/books/{bookId:guid}/update"
 
-<PageTitle>Edit</PageTitle>
+<PageTitle>Edit Book</PageTitle>
 
-<MudCard>
-    <EditForm Model="BookUpdateModel" OnValidSubmit="OnValidSubmitAsync">
-        <MudCardContent>
-            <MudTextField 
-                @bind-Value="BookUpdateModel.Title"
-                For="@(() => BookUpdateModel.Title)"
-                Label="Title"
-                Placeholder="Insert the title here... "/>
+<MudCard Class="form-card">
+    <MudCardContent>
+        <MudText Typo="Typo.h5" Class="form-title">Edit Book Details</MudText>
+        <MudDivider Class="form-divider" />
 
-            <MudTextField
-                @bind-Value="BookUpdateModel.Author"
-                For="@(() => BookUpdateModel.Author)"
-                Label="Author"
-                Placeholder="Insert the author here... "/>
-
-            <MudTextField
-                @bind-Value="BookUpdateModel.Description"
-                For="@(() => BookUpdateModel.Description)"
-                Label="Description"
-                Placeholder="Insert the description here... "/>
-
-            <MudTextField
-                @bind-Value="BookUpdateModel.Isbn"
-                For="@(() => BookUpdateModel.Isbn)"
-                Label="Isbn"
-                Placeholder="Insert the isbn here... "/>
-
-            <MudTextField
-                @bind-Value="BookUpdateModel.Genre"
-                For="@(() => BookUpdateModel.Genre)"
-                Label="Genre"
-                Placeholder="Insert the genre here... "/>
-
-            <MudTextField
-                @bind-Value="BookUpdateModel.Pages"
-                For="@(() => BookUpdateModel.Pages)"
-                Label="Pages"
-                Placeholder="Insert the pages here... "/>
-
-            <MudTextField
-                @bind-Value="BookUpdateModel.Publisher"
-                For="@(() => BookUpdateModel.Publisher)"
-                Label="Publisher"
-                Placeholder="Insert the publisher here... "/>
-
-            <MudDatePicker
-                @bind-Date="BookUpdateModel.PublishDate"
-                For="@(() => BookUpdateModel.PublishDate)"
-                Label="Publish Date"
-                DateFormat="dd/MM/yyyy"/>
-            
-            <MudButton
-                Variant="Variant.Filled"
-                StartIcon="@Icons.Material.Filled.Add"
-                Color="Color.Info"
-                Size="Size.Large"
-                ButtonType="ButtonType.Submit">
-                Update
-            </MudButton>
-        </MudCardContent>
-    </EditForm>    
+        <EditForm Model="BookUpdateModel" OnValidSubmit="OnValidSubmitAsync">
+            <MudGrid Spacing="3">
+                <MudItem xs="12" sm="6">
+                    <MudTextField 
+                        @bind-Value="BookUpdateModel.Title"
+                        For="@(() => BookUpdateModel.Title)"
+                        Label="Title"
+                        Placeholder="Insert the title here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="BookUpdateModel.Author"
+                        For="@(() => BookUpdateModel.Author)"
+                        Label="Author"
+                        Placeholder="Insert the author here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField
+                        @bind-Value="BookUpdateModel.Description"
+                        For="@(() => BookUpdateModel.Description)"
+                        Label="Description"
+                        Placeholder="Insert the description here..."
+                        FullWidth="true"
+                        Multiline="true"
+                        Rows="3" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="BookUpdateModel.Isbn"
+                        For="@(() => BookUpdateModel.Isbn)"
+                        Label="ISBN"
+                        Placeholder="Insert the ISBN here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="BookUpdateModel.Genre"
+                        For="@(() => BookUpdateModel.Genre)"
+                        Label="Genre"
+                        Placeholder="Insert the genre here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="BookUpdateModel.Pages"
+                        For="@(() => BookUpdateModel.Pages)"
+                        Label="Pages"
+                        Placeholder="Insert the number of pages here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="BookUpdateModel.Publisher"
+                        For="@(() => BookUpdateModel.Publisher)"
+                        Label="Publisher"
+                        Placeholder="Insert the publisher here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudDatePicker
+                        @bind-Date="BookUpdateModel.PublishDate"
+                        For="@(() => BookUpdateModel.PublishDate)"
+                        Label="Publish Date"
+                        DateFormat="dd/MM/yyyy"/>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudButton
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Save"
+                        Color="Color.Primary"
+                        Size="Size.Large"
+                        ButtonType="ButtonType.Submit"
+                        Class="submit-button">
+                        Update
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        </EditForm>
+    </MudCardContent>
 </MudCard>

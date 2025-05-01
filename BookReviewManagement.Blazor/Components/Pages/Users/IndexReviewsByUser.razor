@@ -7,7 +7,7 @@
 
     <MudText Typo="Typo.h3" Class="page-title">Reviews</MudText>
 
-    <MudDataGrid Items="Reviews" Class="reviews-data-grid">
+    <MudDataGrid Items="Reviews" Class="data-grid table-bordered">
         <Columns>
             <PropertyColumn Property="r => r.Title" Title="Book" Class="column-book"></PropertyColumn>
             <PropertyColumn Property="r => r.UserName" Title="User" Class="column-user"></PropertyColumn>
@@ -20,7 +20,7 @@
                             <MudButton
                                 Variant="Variant.Filled"
                                 StartIcon="@Icons.Material.Filled.Edit"
-                                Color="Color.Warning"
+                                Color="Color.Dark"
                                 Size="Size.Small"
                                 onclick="@(() => GoToUpdate(context.Item.Id))"
                                 Class="action-button">

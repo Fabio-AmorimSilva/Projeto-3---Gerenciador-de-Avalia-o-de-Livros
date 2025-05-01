@@ -1,7 +1,11 @@
-﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿using Microsoft.JSInterop;
+
+namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
 public partial class Index : ComponentBase
 {
+    [Inject] IJSRuntime JS { get; set; }
+    
     [Inject] public NavigationManager Navigation { get; set; }
 
     [Inject] public IMediator Mediator { get; set; }
@@ -63,5 +67,23 @@ public partial class Index : ComponentBase
     private void GoToUpdateCover(Guid bookId)
     {
         Navigation.NavigateTo($"/books/{bookId}/update-cover");
+    }
+    
+    private async Task<MemoryStream> GetFileStream()
+    {
+        var books = await Mediator.Send(new ListBooksReportsQuery());
+        var fileStream = new MemoryStream(books.Data);
+
+        return fileStream;
+    }
+
+    private async Task DownloadFileFromStream()
+    {
+        var fileStream = await GetFileStream();
+        const string fileName = "books.pdf";
+
+        using var streamRef = new DotNetStreamReference(stream: fileStream);
+
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
     }
 }
