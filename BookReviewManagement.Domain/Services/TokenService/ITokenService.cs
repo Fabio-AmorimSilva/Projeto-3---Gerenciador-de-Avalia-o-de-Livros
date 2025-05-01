@@ -1,4 +1,4 @@
-﻿namespace BookReviewManagement.Application.Common.Interfaces;
+﻿namespace BookReviewManagement.Domain.Services.TokenService;
 
 public interface ITokenService
 {
