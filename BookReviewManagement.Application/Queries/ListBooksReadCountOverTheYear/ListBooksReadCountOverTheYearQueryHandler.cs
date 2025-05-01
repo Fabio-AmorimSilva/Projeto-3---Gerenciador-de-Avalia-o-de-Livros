@@ -8,7 +8,7 @@ public sealed class ListBooksReadCountOverTheYearQueryHandler(IBookReviewManagem
         var booksCount = await context.Reviews
             .AsNoTracking()
             .Where(r => r.CreatedAt.Year == DateTime.Now.Year)
-            .Select(r => r.Id)
+            .Select(r => r.BookId)
             .Distinct()
             .CountAsync(cancellationToken);
 
