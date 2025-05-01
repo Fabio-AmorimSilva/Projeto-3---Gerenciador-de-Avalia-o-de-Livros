@@ -1,6 +1,4 @@
-﻿using BookReviewManagement.Blazor.Components.Pages.Books.Models;
-
-namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
 public partial class UpdateCover : ComponentBase
 {
@@ -26,17 +24,15 @@ public partial class UpdateCover : ComponentBase
     private async Task HandleImageFile(InputFileChangeEventArgs e)
     {
         byte[] coverBytes;
-
-        if (e.File.Size < 150000)
+        
+        using (var stream = new MemoryStream())
         {
-            using (var stream = new MemoryStream())
-            {
-                await e.File.OpenReadStream().CopyToAsync(stream);
-                coverBytes = stream.ToArray();
-                _imagePreview = $"data:{e.File.ContentType};base64,{Convert.ToBase64String(coverBytes)}";
+            await e.File.OpenReadStream().CopyToAsync(stream);
+            coverBytes = stream.ToArray();
+            _imagePreview = $"data:{e.File.ContentType};base64,{Convert.ToBase64String(coverBytes)}";
 
-                await Mediator.Send(new UpdateBookCoverCommand(BookId, coverBytes));
-            }
+            await Mediator.Send(new UpdateBookCoverCommand(BookId, coverBytes));
         }
+    
     }
 }

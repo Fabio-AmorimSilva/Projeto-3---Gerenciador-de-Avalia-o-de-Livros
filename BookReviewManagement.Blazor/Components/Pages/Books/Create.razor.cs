@@ -1,6 +1,4 @@
-﻿using BookReviewManagement.Blazor.Components.Pages.Books.Models;
-
-namespace BookReviewManagement.Blazor.Components.Pages.Books;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Books;
 
 public partial class Create : ComponentBase
 {

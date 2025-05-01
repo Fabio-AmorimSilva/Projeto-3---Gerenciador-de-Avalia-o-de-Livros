@@ -1,6 +1,4 @@
-﻿using BookReviewManagement.Blazor.Components.Pages.Users.Models;
-
-namespace BookReviewManagement.Blazor.Components.Pages.Users;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Users;
 
 public partial class Create : ComponentBase
 {
