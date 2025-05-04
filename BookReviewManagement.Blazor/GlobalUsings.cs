@@ -35,3 +35,4 @@ global using BookReviewManagement.Blazor.Components.Pages.Books.Models;
 global using BookReviewManagement.Blazor.Components.Pages.Reviews.Models;
 global using BookReviewManagement.Blazor.Components.Pages.Users.Models;
 global using Microsoft.AspNetCore.Components.Authorization;
+global using Microsoft.JSInterop;
