@@ -73,7 +73,8 @@ public static class BooksReport
     static IContainer Entry(IContainer container)
     {
         return container
-            .BorderBottom(1)
+            .BorderBottom(2)
+            .PaddingBottom(2)
             .PaddingVertical(1)
             .PaddingHorizontal(6)
             .ShowOnce()
@@ -84,7 +85,7 @@ public static class BooksReport
     static IContainer Block(IContainer container)
     {
         return container
-            .BorderBottom(1)
+            .BorderBottom(2)
             .Background(Colors.Grey.Lighten3)
             .ShowOnce()
             .MinWidth(50)

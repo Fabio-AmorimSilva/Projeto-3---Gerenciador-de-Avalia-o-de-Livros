@@ -10,6 +10,6 @@ public sealed record BooksReportsModel
     public required string Publisher { get; init; }
     public required BookGenre Genre { get; init; }
     public required DateTime PublishDate { get; init; }
-    public required decimal? Score { get; init; } = 0;
+    public required decimal Score { get; init; }
     public byte[]? Cover { get; init; }
 }
