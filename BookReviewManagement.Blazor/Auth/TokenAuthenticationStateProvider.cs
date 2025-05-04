@@ -37,6 +37,6 @@ public class TokenAuthenticationStateProvider(
         var payload = jwt.Split('.')[1];
         var jsonBytes = Convert.FromBase64String(payload.PadRight(payload.Length + payload.Length % 4, '='));
         var claims = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
-        return claims.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()));
+        return claims.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString() ?? string.Empty));
     }
 }
