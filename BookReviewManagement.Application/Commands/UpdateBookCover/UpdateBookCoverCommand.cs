@@ -5,7 +5,6 @@ public sealed record UpdateBookCoverCommand(
     byte[] Cover
 ) : IRequest<Result<Guid>>;
 
-
 public sealed class UpdateBookCoverCommandValidator : AbstractValidator<UpdateBookCoverCommand>
 {
     public UpdateBookCoverCommandValidator()

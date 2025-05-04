@@ -33,6 +33,5 @@ public partial class UpdateCover : ComponentBase
 
             await Mediator.Send(new UpdateBookCoverCommand(BookId, coverBytes));
         }
-    
     }
 }

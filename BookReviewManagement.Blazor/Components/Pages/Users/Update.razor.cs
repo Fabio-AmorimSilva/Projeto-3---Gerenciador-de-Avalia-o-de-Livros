@@ -2,11 +2,15 @@
 
 public partial class Update : ComponentBase
 {
-    [Parameter] public Guid UserId { get; set; }
+    [Parameter] 
+    public Guid UserId { get; set; }
 
-    [Inject] private IMediator Mediator { get; set; }
-    [Inject] private NavigationManager Navigation { get; set; }
-    [Inject] private ISnackbar Snackbar { get; set; }
+    [Inject] 
+    private IMediator Mediator { get; set; }
+    [Inject] 
+    private NavigationManager Navigation { get; set; }
+    [Inject] 
+    private ISnackbar Snackbar { get; set; }
     
     public UserUpdateModel UserUpdateModel { get; set; } = new();
 
