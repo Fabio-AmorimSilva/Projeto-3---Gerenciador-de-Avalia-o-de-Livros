@@ -1,0 +1,47 @@
+﻿@page "/users/create"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<MudCard class="d-flex justify-content-center align-items-center vh-100 form-card">
+    <MudCardContent Class="form-content card p-4 shadow rounded" Style="max-width: 400px; width: 100%;">
+        <EditForm Model="@UserInputModel" OnValidSubmit="OnValidSubmitAsync">
+                <div class="mb-4 text-center">
+                    <h4>Create User</h4>
+                </div>
+                <MudTextField
+                    @bind-Value="UserInputModel.Name"
+                    For="@(() => UserInputModel.Name)"
+                    Label="Name"
+                    Placeholder="Insert name here..."
+                    class="form-input"/>
+
+                <MudTextField
+                    @bind-Value="UserInputModel.Email"
+                    For="@(() => UserInputModel.Email)"
+                    Label="Email"
+                    Placeholder="Insert email here...."
+                    class="form-input"/>
+
+                <MudTextField
+                    @bind-Value="UserInputModel.Password"
+                    For="@(() => UserInputModel.Password)"
+                    Label="Password"
+                    InputType="PasswordInputType"
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@PasswordInputIcon"
+                    OnAdornmentClick="PasswordTextField"
+                    AdornmentAriaLabel="Show Password"
+                    Placeholder="Insert password here..."
+                    class="form-input"/>
+
+                <MudButton Variant="Variant.Filled"
+                           StartIcon="@Icons.Material.Filled.Save"
+                           Color="Color.Info"
+                           Size="Size.Large"
+                           ButtonType="ButtonType.Submit"
+                           class="form-button">
+                    Create
+                </MudButton>
+            </EditForm>
+        </MudCardContent>
+</MudCard>

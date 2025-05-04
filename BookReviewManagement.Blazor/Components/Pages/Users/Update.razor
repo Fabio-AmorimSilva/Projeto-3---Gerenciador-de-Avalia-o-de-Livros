@@ -1,0 +1,43 @@
+﻿@page "/users/update/{userId:guid}"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<PageTitle>Update User</PageTitle>
+
+<MudCard Class="form-card">
+    <MudCardContent>
+        <MudText Typo="Typo.h5" Class="form-title">Edit User</MudText>
+        <MudDivider Class="form-divider" />
+
+        <EditForm Model="@UserUpdateModel" OnValidSubmit="UpdateUser">
+            <MudGrid Spacing="3">
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="UserUpdateModel.Name"
+                        For="@(() => UserUpdateModel.Name)"
+                        Label="Name"
+                        Placeholder="Insert name here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField
+                        @bind-Value="UserUpdateModel.Email"
+                        For="@(() => UserUpdateModel.Email)"
+                        Label="Email"
+                        Placeholder="Insert email here..."
+                        FullWidth="true" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudButton
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Save"
+                        Color="Color.Primary"
+                        ButtonType="ButtonType.Submit"
+                        Class="submit-button">
+                        Save
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        </EditForm>
+    </MudCardContent>
+</MudCard>

@@ -1,0 +1,53 @@
+﻿@page "/reviews/create"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<MudCard class="d-flex justify-content-center align-items-center vh-100 form-card">
+    <EditForm Model="ReviewInputModel" OnValidSubmit="OnValidSubmitAsync">
+        <MudCardContent Class="form-content card p-4 shadow rounded" Style="max-width: 400px; width: 100%;">
+            <div class="mb-4 text-center">
+                <h4>Create Review</h4>
+            </div>
+                <MudTextField
+                    @bind-Value="ReviewInputModel.Description"
+                    For="@(() => ReviewInputModel.Description)"
+                    Label="Description"
+                    Placeholder="Insert description here...."
+                    Class="form-input">
+                </MudTextField>
+                
+                <MudTextField
+                    @bind-Value="ReviewInputModel.Score"
+                    For="@(() => ReviewInputModel.Score)"
+                    Label="Score"
+                    Placeholder="Insert score here....."
+                    Class="form-input">
+                </MudTextField>
+                
+                <MudSelect
+                    Label="Books"
+                    @bind-Value="ReviewInputModel.BookId"
+                    Variant="Variant.Outlined"
+                    AnchorOrigin="Origin.BottomCenter"
+                    For="@(() => ReviewInputModel.BookId)"
+                    Text=""
+                    Class="form-input">
+                    
+                    @foreach (var book in Books)
+                    {
+                        <MudSelectItem Class="dropdown-item" Value="@book.Id">@book.Title</MudSelectItem>
+                    }
+                </MudSelect>
+                
+                <MudButton
+                    Variant="Variant.Outlined"
+                    ButtonType="ButtonType.Submit"
+                    Color="Color.Info"
+                    StartIcon="@Icons.Material.Filled.Add"
+                    Size="Size.Small"
+                    Class="action-button">
+                    Create
+                </MudButton>
+            </MudCardContent>
+        </EditForm>
+</MudCard>

@@ -1,0 +1,43 @@
+﻿@page "/users/login"
+@using Microsoft.AspNetCore.Authorization
+@attribute [AllowAnonymous]
+<MudCard Class="d-flex justify-content-center align-items-center vh-100">
+    <EditForm Model="@LoginInputModel" OnValidSubmit="OnValidSubmitAsync">
+        <MudCardContent Class="card p-4 shadow rounded" Style="max-width: 400px; width: 100%;">
+            <div class="mb-4 text-center">
+                <h4>Login</h4>
+            </div>
+
+            <MudTextField
+                Class="mb-3"
+                @bind-Value="LoginInputModel.Email"
+                For="@(() => LoginInputModel.Email)"
+                Label="Email"
+                Placeholder="Insert email here..."
+                FullWidth="true" />
+
+            <MudTextField
+                Class="mb-4"
+                @bind-Value="LoginInputModel.Password"
+                For="@(() => LoginInputModel.Password)"
+                Label="Password"
+                InputType="PasswordInputType"
+                Adornment="Adornment.End"
+                AdornmentIcon="@_passwordInputIcon"
+                OnAdornmentClick="PasswordTextField"
+                AdornmentAriaLabel="Show Password"
+                Placeholder="Insert password here..."
+                FullWidth="true" />
+
+            <MudButton
+                Class="w-100"
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Save"
+                ButtonType="ButtonType.Submit">
+                Login
+            </MudButton>
+        </MudCardContent>
+    </EditForm>
+</MudCard>
+
+

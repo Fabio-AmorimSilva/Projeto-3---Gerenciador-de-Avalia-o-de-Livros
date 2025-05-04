@@ -1,0 +1,63 @@
+﻿@page "/users"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<div class="page-container">
+    <PageTitle>Users</PageTitle>
+
+    <MudText Typo="Typo.h3" Class="page-title">Users</MudText>
+
+    <MudDivider Vertical></MudDivider>
+
+    <MudButton
+        Href="/users/create"
+        StartIcon="@Icons.Material.Filled.Add"
+        Size="Size.Small"
+        Variant="Variant.Filled"
+        Color="Color.Info"
+        Class="action-button">
+        New User
+    </MudButton>
+
+    <MudDataGrid Items="Users" Class="data-grid table-bordered">
+        <Columns>
+            <PropertyColumn Property="u => u.Name" Title="User"></PropertyColumn>
+            <PropertyColumn Property="u => u.Email"></PropertyColumn>
+            <TemplateColumn CellClass="d-flex justify-end">
+                <CellTemplate>
+                    <div class="actions-container">
+                        <MudStack Row Class="action-stack">
+                            <MudButton
+                                Variant="Variant.Filled"
+                                StartIcon="@Icons.Material.Filled.List"
+                                Color="Color.Dark"
+                                Size="Size.Small"
+                                onclick="@(() => GoToReviews(context.Item.Id))"
+                                Class="action-button">
+                                Reviews
+                            </MudButton>
+                            <MudButton
+                                StartIcon="@Icons.Material.Filled.Edit"
+                                Size="Size.Small"
+                                Variant="Variant.Filled"
+                                Color="Color.Dark"
+                                onClick="@(() => GoToUpdate(context.Item.Id))"
+                                Class="action-button">
+                                Edit
+                            </MudButton>
+                            <MudButton
+                                StartIcon="@Icons.Material.Filled.Delete"
+                                Size="Size.Small"
+                                Variant="Variant.Filled"
+                                Color="Color.Error"
+                                onClick="@(() => DeleteUserAsync(context.Item.Id))"
+                                Class="action-button">
+                                Delete
+                            </MudButton>
+                        </MudStack>
+                    </div>
+                </CellTemplate>
+            </TemplateColumn>
+        </Columns>
+    </MudDataGrid>
+</div>

@@ -1,0 +1,100 @@
+﻿@page "/books"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<script>
+    window.downloadFileFromStream = async (fileName, contentStreamReference) => {
+        const arrayBuffer = await contentStreamReference.arrayBuffer();
+        const blob = new Blob([arrayBuffer]);
+        const url = URL.createObjectURL(blob);
+        const anchorElement = document.createElement('a');
+        anchorElement.href = url;
+        anchorElement.download = fileName ?? '';
+        anchorElement.click();
+        anchorElement.remove();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+<div class="page-container">
+    <PageTitle>Books</PageTitle>
+
+    <MudText Typo="Typo.h3" Class="page-title">Books</MudText>
+
+    <div class="actions-container">
+        <MudStack Row Class="action-stack">
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Add"
+                Color="Color.Dark"
+                Size="Size.Small"
+                Href="/books/create"
+                Class="action-button">
+                New Book
+            </MudButton>
+            <MudButton
+                Variant="Variant.Filled"
+                StartIcon="@Icons.Material.Filled.Add"
+                Color="Color.Dark"
+                Size="Size.Small"
+                Href="/reviews/create"
+                Class="action-button">
+                New Review
+            </MudButton>
+        </MudStack>
+    </div>
+
+    <MudButton 
+        StartIcon="@Icons.Material.Filled.Download" 
+        @onclick="DownloadFileFromStream"
+        Color="Color.Info"
+        Size="Size.Small">
+        Books
+    </MudButton>
+    
+    <div class="left-align">
+        <MudText>Books Read this year: @ReadCountCurrentYear</MudText>
+    </div>
+
+    <MudGrid Class="catalog-grid" Spacing="2">
+        @foreach (var book in Books)
+        {
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudCard Class="book-card">
+                    <MudSpacer />
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6" Class="book-title">@book.Title</MudText>
+                        <MudText Typo="Typo.body2" Class="book-author">By: @book.Author</MudText>
+                        <MudText Typo="Typo.caption" Class="book-genre">Genre: @book.Genre</MudText>
+                        <MudText Typo="Typo.body2" Class="book-description">@book.Description</MudText>
+                    </MudCardContent>
+
+                    <MudCardActions Class="card-actions">
+                        <MudExpansionPanel Class="actions-expansion" Icon="@Icons.Material.Filled.ViewList" DisableToggleIcon="true">
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => GoToReviews(book.Id))">
+                                Reviews
+                            </MudLink>
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => GoToUpdate(book.Id))">
+                                Edit
+                            </MudLink>
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => GoToUpdateCover(book.Id))">
+                                Update Cover
+                            </MudLink>
+                            <MudLink 
+                                Class="action-link"
+                                OnClick="@(() => DeleteBook(book.Id))">
+                                Delete
+                            </MudLink>
+                        </MudExpansionPanel>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
+</div>

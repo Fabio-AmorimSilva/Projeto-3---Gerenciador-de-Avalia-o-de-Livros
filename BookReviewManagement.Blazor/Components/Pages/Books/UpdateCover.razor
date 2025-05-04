@@ -1,0 +1,23 @@
+﻿@page "/books/{bookId:guid}/update-cover"
+
+<PageTitle>Update Cover</PageTitle>
+
+<MudCard>
+        <MudCardContent>
+            <div>
+                <label for="bookCover" class="form-label">Book Cover:</label>
+                <div class="custom-file-input">
+                    <InputFile id="bookCover" @bind-Value="BookUpdateCoverModel.Cover"
+                               accept=".jpg,.jpeg,.png" OnChange="HandleImageFile" />
+                    <span class="custom-file-label">Choose File</span>
+                </div>
+                @if (_imagePreview != null)
+                {
+                    <div style="margin: 1rem; border: solid black 2px; width: 254px; height: 254px;">
+                        <img src="@_imagePreview" alt="Image Preview" style="width: 250px; height: 250px;" />
+                    </div>
+                }
+            </div>
+            
+        </MudCardContent>
+</MudCard>
