@@ -1,6 +1,4 @@
-﻿// Global using directives
-
-global using System.Reflection;
+﻿global using System.Reflection;
 global using Ardalis.Specification.EntityFrameworkCore;
 global using BookReviewManagement.Application.Behaviours;
 global using BookReviewManagement.Application.Common.Interfaces;
@@ -15,6 +13,5 @@ global using BookReviewManagement.Domain.Specifications;
 global using FluentValidation;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
-global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
 
