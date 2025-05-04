@@ -17,7 +17,7 @@ public partial class Create : ComponentBase
     public InputType PasswordInputType { get; set; } = InputType.Password;
     public string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
 
-    public async void OnValidSubmitAsync(EditContext editContext)
+    public async Task OnValidSubmitAsync(EditContext editContext)
     {
         if (editContext.Model is UserInputModel model)
         {
