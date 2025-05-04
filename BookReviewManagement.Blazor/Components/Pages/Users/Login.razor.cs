@@ -18,10 +18,10 @@ public partial class Login : ComponentBase
     
     [Inject]
     public TokenAuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
-    
-    public bool IsShow;
+
+    private bool _isShow;
     public InputType PasswordInputType { get; set; } = InputType.Password;
-    public string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+    private string _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
     
     private async Task OnValidSubmitAsync(EditContext editContext)
     {
@@ -50,16 +50,16 @@ public partial class Login : ComponentBase
     
     public void PasswordTextField()
     {
-        if (IsShow)
+        if (_isShow)
         {
-            IsShow = false;
-            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            _isShow = false;
+            _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
             PasswordInputType = InputType.Password;
         }
         else
         {
-            IsShow = true;
-            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            _isShow = true;
+            _passwordInputIcon = Icons.Material.Filled.Visibility;
             PasswordInputType = InputType.Text;
         }
     }
