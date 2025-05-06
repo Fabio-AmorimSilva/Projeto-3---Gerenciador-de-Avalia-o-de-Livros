@@ -5,16 +5,17 @@ public sealed class GetReviewQueryHandler(IBookReviewManagementDbContext context
     public async Task<Result<GetReviewViewModel>> Handle(GetReviewQuery request, CancellationToken cancellationToken)
     {
         var review = await context.Reviews
-            .AsNoTracking()
-            .FirstOrDefaultAsync(r => r.Id == request.ReviewId, cancellationToken);
-
+            .Where(r => r.Id == request.ReviewId)
+            .Select(r => new GetReviewViewModel
+            {
+                Description = r.Description,
+                Score = r.Score
+            })
+            .FirstOrDefaultAsync(cancellationToken);
+        
         if (review is null)
             return Result<GetReviewViewModel>.Error(ErrorMessages.NotFound<Review>());
 
-        return Result<GetReviewViewModel>.Success(new GetReviewViewModel
-        {
-            Description = review.Description,
-            Score = review.Score
-        });
+        return Result<GetReviewViewModel>.Success(review);
     }
 }
