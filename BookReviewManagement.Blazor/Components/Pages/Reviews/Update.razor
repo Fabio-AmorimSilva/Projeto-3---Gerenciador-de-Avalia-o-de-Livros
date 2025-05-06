@@ -1,0 +1,36 @@
+﻿@page "/reviews/{reviewId}/update"
+
+<MudCard class="d-flex justify-content-center align-items-center vh-100 form-card">
+    <EditForm Model="ReviewUpdateModel" OnValidSubmit="OnValidSubmitAsync">
+        <MudCardContent Class="form-content card p-4 shadow rounded" Style="max-width: 400px; width: 100%;">
+            <div class="mb-4 text-center">
+                <h4>Create Review</h4>
+            </div>
+                <MudTextField
+                    @bind-Value="ReviewUpdateModel.Description"
+                    For="@(() => ReviewUpdateModel.Description)"
+                    Label="Description"
+                    Placeholder="Insert description here...."
+                    Class="form-input">
+                </MudTextField>
+                
+                <MudTextField
+                    @bind-Value="ReviewUpdateModel.Score"
+                    For="@(() => ReviewUpdateModel.Score)"
+                    Label="Score"
+                    Placeholder="Insert score here....."
+                    Class="form-input">
+                </MudTextField>
+            
+                <MudButton
+                    Variant="Variant.Outlined"
+                    ButtonType="ButtonType.Submit"
+                    Color="Color.Info"
+                    StartIcon="@Icons.Material.Filled.Add"
+                    Size="Size.Small"
+                    Class="action-button">
+                    Create
+                </MudButton>
+            </MudCardContent>
+        </EditForm>
+</MudCard>
