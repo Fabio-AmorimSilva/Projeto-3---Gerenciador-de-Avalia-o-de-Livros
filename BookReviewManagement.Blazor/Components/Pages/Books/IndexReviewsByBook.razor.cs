@@ -53,6 +53,6 @@ public partial class IndexReviewsByBook : ComponentBase
 
     private void GoToUpdate(Guid reviewId)
     {
-        NavigationManager.NavigateTo($"/update/reviews/{reviewId}");
+        NavigationManager.NavigateTo($"/reviews/{reviewId}/update");
     }
 }

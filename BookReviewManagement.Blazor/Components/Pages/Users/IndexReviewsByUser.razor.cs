@@ -53,7 +53,7 @@ public partial class IndexReviewsByUser : ComponentBase
 
     private void GoToUpdate(Guid reviewId)
     {
-        Navigation.NavigateTo($"/update/reviews/{reviewId}");
+        Navigation.NavigateTo($"/reviews/{reviewId}/update");
     }
     
     
