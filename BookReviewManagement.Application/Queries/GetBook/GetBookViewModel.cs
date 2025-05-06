@@ -9,4 +9,5 @@ public sealed record GetBookViewModel
     public required string Publisher { get; init; }
     public required BookGenre Genre { get; init; }
     public required DateTime PublishDate { get; init; }
+    public required int Pages { get; init; }
 }

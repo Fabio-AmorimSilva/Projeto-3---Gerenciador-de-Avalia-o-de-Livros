@@ -14,7 +14,8 @@ public sealed class GetBookQueryHandler(IBookReviewManagementDbContext context) 
                 Author = b.Author,
                 Publisher = b.Publisher,
                 Genre = b.Genre,
-                PublishDate = b.PublishDate
+                PublishDate = b.PublishDate,
+                Pages = b.Pages
             })
             .FirstOrDefaultAsync(cancellationToken);
 
