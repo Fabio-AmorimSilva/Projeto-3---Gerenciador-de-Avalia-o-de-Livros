@@ -18,7 +18,32 @@ public partial class Update : ComponentBase
     public Guid BookId { get; set; }
     
     public BookUpdateModel BookUpdateModel { get; set; } = new();
-    
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Mediator.Send(new GetBookQuery(BookId));
+        
+        if(!response.IsSuccess)
+            Snackbar.Add($"Error: {response.Message}", Severity.Error);
+        
+        var book = response.Data;
+
+        if (book is not null)
+        {
+            BookUpdateModel = new BookUpdateModel
+            {
+                Title = book.Title,
+                Description = book.Description,
+                Isbn = book.Isbn,
+                PublishDate = book.PublishDate,
+                Genre = book.Genre,
+                Pages = book.Pages,
+                Author = book.Author,
+                Publisher = book.Publisher
+            };
+        }
+    }
+
     private async Task OnValidSubmitAsync(EditContext editContext)
     {
         if (editContext.Model is BookInputModel model)
