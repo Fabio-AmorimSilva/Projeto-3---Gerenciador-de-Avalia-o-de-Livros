@@ -1,10 +1,10 @@
-﻿@page "/reviews/{reviewId}/update"
+﻿@page "/reviews/{reviewId:guid}/update"
 
 <MudCard class="d-flex justify-content-center align-items-center vh-100 form-card">
     <EditForm Model="ReviewUpdateModel" OnValidSubmit="OnValidSubmitAsync">
         <MudCardContent Class="form-content card p-4 shadow rounded" Style="max-width: 400px; width: 100%;">
             <div class="mb-4 text-center">
-                <h4>Create Review</h4>
+                <h4>Edit Review</h4>
             </div>
                 <MudTextField
                     @bind-Value="ReviewUpdateModel.Description"
@@ -29,7 +29,7 @@
                     StartIcon="@Icons.Material.Filled.Add"
                     Size="Size.Small"
                     Class="action-button">
-                    Create
+                    Save
                 </MudButton>
             </MudCardContent>
         </EditForm>

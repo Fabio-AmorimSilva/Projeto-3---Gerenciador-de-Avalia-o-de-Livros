@@ -1,6 +1,4 @@
-﻿using BookReviewManagement.Application.Queries.GetReview;
-
-namespace BookReviewManagement.Blazor.Components.Pages.Reviews;
+﻿namespace BookReviewManagement.Blazor.Components.Pages.Reviews;
 
 public partial class Update : ComponentBase
 {
@@ -40,8 +38,24 @@ public partial class Update : ComponentBase
         }
     }
 
-    private async Task OnValidSubmitAsync()
+    private async Task OnValidSubmitAsync(EditContext editContext)
     {
-        
+        if (editContext.Model is ReviewUpdateModel model)
+        {
+            var command = new UpdateReviewCommand
+            (
+                ReviewId: ReviewId,
+                Description: model.Description,
+                Score: model.Score
+            );
+            
+            var response = await Mediator.Send(command);
+            
+            if(!response.IsSuccess)
+                Snackbar.Add($"Error: {response.Message}", Severity.Error);
+            
+            Snackbar.Add("Review updated successfully!", Severity.Success);
+            Navigation.NavigateTo($"/reviews/{ReviewId}/update");
+        }
     }
 }
