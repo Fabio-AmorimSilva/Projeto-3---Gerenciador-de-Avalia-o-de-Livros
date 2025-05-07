@@ -71,26 +71,26 @@
 
                     <MudCardActions Class="card-actions">
                         <MudExpansionPanel Class="actions-expansion" Icon="@Icons.Material.Filled.ViewList" DisableToggleIcon="true">
-                            <MudLink 
+                            <MudButton 
                                 Class="action-link"
                                 OnClick="@(() => GoToReviews(book.Id))">
                                 Reviews
-                            </MudLink>
-                            <MudLink 
+                            </MudButton>
+                            <MudButton 
                                 Class="action-link"
                                 OnClick="@(() => GoToUpdate(book.Id))">
                                 Edit
-                            </MudLink>
-                            <MudLink 
+                            </MudButton>
+                            <MudButton 
                                 Class="action-link"
                                 OnClick="@(() => GoToUpdateCover(book.Id))">
                                 Update Cover
-                            </MudLink>
-                            <MudLink 
+                            </MudButton>
+                            <MudButton 
                                 Class="action-link"
                                 OnClick="@(() => DeleteBook(book.Id))">
                                 Delete
-                            </MudLink>
+                            </MudButton>
                         </MudExpansionPanel>
                     </MudCardActions>
                 </MudCard>
